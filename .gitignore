@@ -35,6 +35,12 @@ Thumbs.db
 # Vercel deployment artifacts
 .vercel/
 
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
 # Antigravity / Gemini temporary runtimes
 .gemini/
 .system_generated/
