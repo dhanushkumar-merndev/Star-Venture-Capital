@@ -1,0 +1,277 @@
+@import "../components/DepthText.css";
+
+/* ==========================================================================
+   Full-Bleed Hero Section with Gradient ASCII Background & 3D DepthText
+   Tailored for Star Venture Capital — Currency Matrix & Continuous Shape Morph
+   ========================================================================== */
+
+.hero-section.hero-fullbleed {
+  position: relative;
+  height: 100vh;
+  min-height: 540px;
+  margin-top: -4.75rem;
+  padding-top: calc(4.75rem + 1rem);
+  padding-bottom: 1.5rem;
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #05070B;
+  color: #FFFFFF;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Full-Bleed ASCII Canvas Backdrop */
+.hero-ascii-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+  background: radial-gradient(ellipse at 50% 15%, rgba(220, 38, 38, 0.28) 0%, rgba(5, 7, 11, 0.82) 65%, #05070B 100%);
+  transition: background 0.8s ease;
+}
+
+.hero-ascii-backdrop .gradient-ascii-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto;
+}
+
+/* Soft Vignette Overlay for Crisp Text Contrast */
+.hero-backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(5, 7, 11, 0.2) 0%, rgba(5, 7, 11, 0.65) 80%, rgba(5, 7, 11, 0.95) 100%),
+              linear-gradient(180deg, rgba(5, 7, 11, 0.7) 0%, transparent 25%, transparent 75%, rgba(5, 7, 11, 0.98) 100%);
+}
+
+/* Centered Content Stack */
+.hero-center-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.hero-center-container > * {
+  pointer-events: auto;
+}
+
+/* Eyebrow Pill over Dark Hero */
+.hero-fullbleed .hero-eyebrow {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #E2E8F0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-fullbleed .hero-eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #DC2626;
+  box-shadow: 0 0 12px #DC2626;
+  animation: pulse-dot 2.5s infinite ease-in-out;
+}
+
+/* 3D Depth Glowing Headline Showcase */
+.hero-depth-showcase {
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  perspective: 1200px;
+}
+
+.depth-text-mount {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.depth-text-cycler-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Minimal Subtitle */
+.hero-minimal-copy {
+  font-family: var(--font-body, sans-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: #CBD5E1;
+  max-width: 62ch;
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Compact CTA Buttons */
+.hero-minimal-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.btn-hero {
+  padding: 0.85rem 1.85rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  background-color: var(--star-red, #DC2626);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.btn-hero:hover {
+  background-color: #EF4444;
+  box-shadow: 0 10px 28px rgba(220, 38, 38, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-hero-alt {
+  padding: 0.85rem 1.75rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  color: #F1F5F9;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-hero-alt:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Floating Interactive Dock at Bottom of Hero */
+.hero-interactive-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.45rem 1.15rem;
+  background: rgba(11, 15, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: #94A3B8;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dock-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dock-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #DC2626;
+  box-shadow: 0 0 10px #DC2626;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.dock-label strong {
+  color: #F1F5F9;
+  font-weight: 600;
+}
+
+.dock-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.dock-currency-badge {
+  color: #F59E0B;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.dock-palette-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dock-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  border-radius: 9999px;
+  padding: 0.22rem 0.65rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dock-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.dock-btn.is-active {
+  background: rgba(220, 38, 38, 0.25);
+  border-color: #DC2626;
+  color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.35);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}

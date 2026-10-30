@@ -1,0 +1,392 @@
+/* ==========================================================================
+   SlicedWaveMatrix — Full-Screen Edge-to-Edge Sliced Waves
+   White background, Red / Dark Red / Wine Sliced Waves, Bar-Clickable Columns
+   ========================================================================== */
+
+.wave-matrix-fullbleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.wave-matrix-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 740px;
+  height: 780px;
+  max-height: 860px;
+  background: #ffffff;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Subtle background grid pattern on pure white */
+.wave-matrix-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(220, 38, 38, 0.04) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
+/* SlicedWaves Canvas Host */
+.wave-matrix-canvas-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: transparent;
+}
+
+/* SVG Connecting Tethers Layer */
+.wave-matrix-svg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* Vertical Clickable Bar Hit-Zones */
+.wave-matrix-hit-zones-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.wave-bar-hit-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 96px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  will-change: left;
+}
+
+.wave-bar-hit-zone:hover,
+.wave-bar-hit-zone.is-hovered {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.03) 0%, rgba(220, 38, 38, 0.12) 50%, rgba(74, 4, 78, 0.03) 100%);
+  border-left: 1px dashed rgba(220, 38, 38, 0.3);
+  border-right: 1px dashed rgba(220, 38, 38, 0.3);
+}
+
+.wave-bar-hit-zone.is-expanded {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, rgba(220, 38, 38, 0.16) 50%, rgba(74, 4, 78, 0.05) 100%);
+  border-left: 1.5px solid rgba(220, 38, 38, 0.4);
+  border-right: 1.5px solid rgba(220, 38, 38, 0.4);
+}
+
+
+
+/* Floating Card / Tag Node */
+.wave-matrix-nodes-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.wave-node-item {
+  position: absolute;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  will-change: transform, top, left;
+  z-index: 20;
+}
+
+.wave-node-item.is-expanded {
+  z-index: 60;
+}
+
+/* Compact Tiny Card (Default State) */
+.wave-tiny-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(220, 38, 38, 0.25);
+  border-radius: 9999px;
+  padding: 0.5rem 1.05rem 0.5rem 0.6rem;
+  box-shadow: 0 6px 20px -3px rgba(185, 28, 28, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.wave-tiny-card:hover,
+.wave-bar-hit-zone:hover ~ .wave-matrix-nodes-host .wave-tiny-card {
+  transform: scale(1.06);
+  border-color: #dc2626;
+  box-shadow: 0 10px 25px -4px rgba(220, 38, 38, 0.28), 0 4px 10px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+
+.wave-node-num {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #dc2626;
+  background: #fef2f2;
+  border-radius: 9999px;
+  padding: 0.22rem 0.5rem;
+  line-height: 1;
+}
+
+.wave-node-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.wave-node-chevron {
+  color: #94a3b8;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.wave-tiny-card:hover .wave-node-chevron {
+  color: #dc2626;
+  transform: translateY(1px);
+}
+
+/* Expanded Detailed Card */
+.wave-detailed-card {
+  width: clamp(300px, 24vw, 360px);
+  background: #ffffff;
+  border: 2px solid rgba(220, 38, 38, 0.45);
+  border-radius: 20px;
+  padding: 1.5rem 1.65rem;
+  box-shadow: 0 25px 60px -12px rgba(153, 27, 27, 0.28), 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  animation: waveCardPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  backdrop-filter: blur(16px);
+  position: relative;
+  pointer-events: auto;
+}
+
+@keyframes waveCardPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.wave-card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.wave-card-tag {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+}
+
+.wave-card-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  padding: 0.35rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.wave-card-close-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.wave-card-headline {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.wave-card-description {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 1.35rem;
+}
+
+.wave-card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 50%, #4a044e 100%);
+  padding: 0.7rem 1.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.wave-card-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(220, 38, 38, 0.5);
+  color: #ffffff;
+}
+
+.wave-card-action-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.wave-card-action-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Bottom Controls / Indicator */
+.wave-matrix-footer-nav {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.wave-footer-pill {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.74rem;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.wave-footer-dot-nav {
+  display: flex;
+  gap: 0.45rem;
+  margin-left: 0.35rem;
+}
+
+.wave-dot-btn {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.wave-dot-btn:hover {
+  background: #94a3b8;
+}
+
+.wave-dot-btn.is-active {
+  background: #dc2626;
+  width: 22px;
+  border-radius: 9999px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .wave-matrix-wrapper {
+    height: 700px;
+    min-height: 660px;
+  }
+  .wave-node-title {
+    font-size: 0.82rem;
+  }
+  .wave-detailed-card {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wave-matrix-wrapper {
+    height: 600px;
+    min-height: 580px;
+  }
+  .wave-matrix-header-hint {
+    display: none;
+  }
+  .wave-node-title {
+    display: none; /* Show index badges on small screens to prevent crowded UI */
+  }
+  .wave-tiny-card {
+    padding: 0.4rem 0.65rem;
+  }
+  .wave-detailed-card {
+    width: 275px;
+    padding: 1.15rem;
+  }
+  .wave-card-headline {
+    font-size: 1.15rem;
+  }
+  .wave-card-description {
+    font-size: 0.825rem;
+  }
+}

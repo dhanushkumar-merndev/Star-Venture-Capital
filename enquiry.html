@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Founder Portal & Application · Star Venture Capital. Submit your venture for committee review within 5 business days." />
+  <title>Founder Enquiry Portal · Star Venture Capital</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon" />
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#FAF9F6" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <a href="/index.html" class="brand-wrapper" aria-label="Star Venture Capital - Home">
+        <span class="brand-logo-surface">
+          <img class="brand-logo" src="/brand/star-venture-capital-280.png" srcset="/brand/star-venture-capital-280.png 280w, /brand/star-venture-capital-560.png 560w, /brand/star-venture-capital-840.png 840w" sizes="(max-width: 768px) 188px, 220px" width="3083" height="573" alt="Star Venture Capital" loading="eager" decoding="async" />
+        </span>
+      </a>
+
+      <nav class="nav-desktop" role="navigation" aria-label="Main Navigation">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/approach.html" class="nav-link">Approach</a>
+        <a href="/focus.html" class="nav-link">Investment Focus</a>
+        <a href="/capabilities.html" class="nav-link">Capabilities</a>
+        <a href="/portfolio.html" class="nav-link">Portfolio</a>
+        <a href="/process.html" class="nav-link">Process</a>
+        <a href="/governance.html" class="nav-link">Governance</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/enquiry.html" class="btn btn-primary is-current" id="headerCtaBtn">Founder Enquiry</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile Navigation">
+      <a href="/index.html" class="nav-link">Home</a>
+      <a href="/approach.html" class="nav-link">Approach</a>
+      <a href="/focus.html" class="nav-link">Investment Focus</a>
+      <a href="/capabilities.html" class="nav-link">Star Groups Capabilities</a>
+      <a href="/portfolio.html" class="nav-link">Portfolio</a>
+      <a href="/process.html" class="nav-link">Investment Process</a>
+      <a href="/governance.html" class="nav-link">Governance</a>
+      <a href="/enquiry.html" class="btn btn-primary" style="margin-top: 0.5rem; text-align: center;">Founder Enquiry</a>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- Page Header Banner -->
+    <section class="page-hero-section">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="/index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Founder Portal</span>
+        </nav>
+        <div class="section-badge">Founder Portal</div>
+        <h1 class="page-headline">Let’s start a conversation.</h1>
+        <p class="page-lead">
+          Are you building an enterprise with durable moats? Submit your details directly to our investment committee. Every complete application receives a response within 5 business days.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Form Section -->
+    <section class="section">
+      <div class="container enquiry-container">
+        <!-- Content Column -->
+        <div class="enquiry-content-col">
+          <div class="section-badge">Application Guidelines</div>
+          <h2 class="section-title">Direct partner review, guaranteed.</h2>
+          <p class="section-subtitle">
+            We partner with founders who demonstrate relentless problem obsession, clear market validation, and high execution ambition.
+          </p>
+
+          <ul class="enquiry-checklist">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Guaranteed 5-Day Review:</strong> Every complete submission is reviewed directly by our Investment Committee partners.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Strict Confidentiality:</strong> Your intellectual property, traction metrics, and pitch decks remain protected under strict non-disclosure.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>No Cold Bureaucracy:</strong> If there's an alignment, you speak directly with principals who have built and scaled enterprises.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form Card -->
+        <div class="enquiry-card">
+          <!-- Active Form -->
+          <form id="founderEnquiryForm" novalidate aria-label="Founder Enquiry Form">
+            <div class="form-grid">
+              <!-- Founder Name -->
+              <div class="form-group">
+                <label for="founderName" class="form-label">
+                  <span>Founder Name <span class="req">*</span></span>
+                </label>
+                <input type="text" id="founderName" name="founderName" class="form-input" placeholder="e.g. Sarah Chen" required aria-required="true" />
+                <span class="form-error-msg" id="founderNameError">Please enter your name.</span>
+              </div>
+
+              <!-- Company Name -->
+              <div class="form-group">
+                <label for="companyName" class="form-label">
+                  <span>Company Name <span class="req">*</span></span>
+                </label>
+                <input type="text" id="companyName" name="companyName" class="form-input" placeholder="e.g. Apex Labs" required aria-required="true" />
+                <span class="form-error-msg" id="companyNameError">Please enter your company name.</span>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email" class="form-label">
+                  <span>Work Email <span class="req">*</span></span>
+                </label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="sarah@apexlabs.com" required aria-required="true" />
+                <span class="form-error-msg" id="emailError">Please enter a valid work email address.</span>
+              </div>
+
+              <!-- Website -->
+              <div class="form-group">
+                <label for="website" class="form-label">
+                  <span>Company Website <span class="opt">(Optional)</span></span>
+                </label>
+                <input type="url" id="website" name="website" class="form-input" placeholder="https://apexlabs.com" />
+              </div>
+
+              <!-- Sector -->
+              <div class="form-group">
+                <label for="sector" class="form-label">
+                  <span>Primary Sector <span class="req">*</span></span>
+                </label>
+                <select id="sector" name="sector" class="form-select" required aria-required="true">
+                  <option value="">Select your sector</option>
+                  <option value="Enterprise Software & Workflows">Enterprise Software & Workflows</option>
+                  <option value="Brand & Consumer Tech">Brand & Consumer Tech</option>
+                  <option value="Media & Content Production Tech">Media & Content Production Tech</option>
+                  <option value="Built Environment & Space Tech">Built Environment & Space Tech</option>
+                  <option value="Sustainable Living & Eco Infrastructure">Sustainable Living & Eco Infrastructure</option>
+                  <option value="Other Transformative Industry">Other Transformative Industry</option>
+                </select>
+                <span class="form-error-msg" id="sectorError">Please select your primary sector.</span>
+              </div>
+
+              <!-- Funding Stage -->
+              <div class="form-group">
+                <label for="stage" class="form-label">
+                  <span>Funding Stage <span class="req">*</span></span>
+                </label>
+                <select id="stage" name="stage" class="form-select" required aria-required="true">
+                  <option value="">Select funding stage</option>
+                  <option value="Pre-Seed (Ideation / Prototype)">Pre-Seed (Ideation / Prototype)</option>
+                  <option value="Seed (Early Traction / Live Beta)">Seed (Early Traction / Live Beta)</option>
+                  <option value="Pre-Series A (Validating PMF)">Pre-Series A (Validating PMF)</option>
+                  <option value="Series A (Scaling Revenue)">Series A (Scaling Revenue)</option>
+                  <option value="Series B+">Series B+</option>
+                </select>
+                <span class="form-error-msg" id="stageError">Please select your funding stage.</span>
+              </div>
+
+              <!-- Pitch Summary -->
+              <div class="form-group full-width">
+                <label for="pitchSummary" class="form-label">
+                  <span>Short Introduction / What are you building? <span class="req">*</span></span>
+                </label>
+                <textarea id="pitchSummary" name="pitchSummary" class="form-textarea" maxlength="800" placeholder="Briefly explain the problem you solve, your moat, and current traction..." required aria-required="true"></textarea>
+                <div class="form-char-count" id="charCountDisplay">0 / 800 characters</div>
+                <span class="form-error-msg" id="pitchSummaryError">Please provide at least 20 characters describing your venture.</span>
+              </div>
+
+              <!-- Pitch Deck URL -->
+              <div class="form-group full-width">
+                <label for="deckUrl" class="form-label">
+                  <span>Pitch Deck URL <span class="opt">(Docsend, Google Drive, or Notion link)</span></span>
+                </label>
+                <input type="url" id="deckUrl" name="deckUrl" class="form-input" placeholder="https://docsend.com/view/..." />
+              </div>
+            </div>
+
+            <div class="form-footer-action">
+              <button type="submit" class="btn btn-primary" id="enquirySubmitBtn" style="width: 100%;">
+                <span>Submit Founder Enquiry</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <p class="form-privacy-note">
+                By submitting this form, you acknowledge that your information will be shared solely with Star Venture Capital investment principals under non-disclosure terms.
+              </p>
+            </div>
+          </form>
+
+          <!-- Success State -->
+          <div class="enquiry-success-state" id="enquirySuccessState" role="alert">
+            <div class="success-icon-wrap" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="success-title">Enquiry Received</h3>
+            <p class="success-desc">
+              Thank you for sharing your venture with Star Venture Capital. Our investment team has logged your submission and will review your materials within 5 business days.
+            </p>
+            <div class="submission-preview-card" id="submissionSummaryPreview">
+              <!-- Injected by enquiryForm.js -->
+            </div>
+            <button class="btn btn-secondary" id="enquiryResetBtn">Submit Another Enquiry</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <a href="/index.html" class="brand-wrapper" aria-label="Star Venture Capital - Home">
+            <img class="brand-logo" src="/brand/star-venture-capital-280.png" srcset="/brand/star-venture-capital-280.png 280w, /brand/star-venture-capital-560.png 560w, /brand/star-venture-capital-840.png 840w" sizes="(max-width: 480px) 240px, 280px" width="3083" height="573" alt="Star Venture Capital" loading="lazy" decoding="async" />
+            <span class="brand-relationship">A Star Groups company</span>
+          </a>
+          <p class="footer-desc">
+            An independent investment entity under the Star Groups umbrella, backing ambitious founders building category-defining enterprises with enduring moats.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <ul class="footer-links-list">
+            <li><a href="/index.html" class="footer-link">Home</a></li>
+            <li><a href="/approach.html" class="footer-link">Approach & Philosophy</a></li>
+            <li><a href="/focus.html" class="footer-link">Investment Focus Sectors</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Groups Ecosystem</a></li>
+            <li><a href="/portfolio.html" class="footer-link">Portfolio Tracks</a></li>
+            <li><a href="/process.html" class="footer-link">Investment Process</a></li>
+            <li><a href="/governance.html" class="footer-link">Governance & Oversight</a></li>
+            <li><a href="/enquiry.html" class="footer-link">Founder Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Star Groups Network</div>
+          <ul class="footer-links-list">
+            <li><a href="/capabilities.html" class="footer-link">StarTech India (Tech & Automation)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Growth Hub (Brand & Growth)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Production (Media & Content)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Garden (Biophilic Landscaping)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Space Interiors (Modern Workspaces)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © <span id="yearSpan">2026</span> Star Venture Capital. All rights reserved.
+        </div>
+        <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top of page">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer-disclaimer-text">
+        <strong>Regulatory & Investment Disclaimer:</strong> This website is for informational and educational purposes only and does not constitute an offer to sell or the solicitation of an offer to purchase any security or investment product. Star Venture Capital acts as an independent investment entity. Information regarding portfolio and group companies is subject to change without notice.
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/scripts/enquiryPage.js"></script>
+</body>
+</html>

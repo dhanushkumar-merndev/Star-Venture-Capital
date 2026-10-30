@@ -1,0 +1,599 @@
+/* ==========================================================================
+   DualLineFocusGraph.css — Interactive Dual-Line Investment Focus Graph
+   Clean, Rock-Solid Alignment with HTML Pill Overlay & SVG Wave Dynamics
+   ========================================================================== */
+
+.dual-focus-graph-section {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0 3.5rem;
+}
+
+/* ==========================================================================
+   Slow-Motion View Transition Cascading (Up to Below)
+   ========================================================================== */
+.dual-focus-container {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.dual-focus-container.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Top Controls & Meta Bar
+   ========================================================================== */
+.dual-focus-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dual-focus-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.graph-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.85rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle, #E5E7EB);
+  border-radius: 999px;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary, #4B5563);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.graph-ctrl-btn:hover {
+  border-color: #DC2626;
+  color: #DC2626;
+  transform: translateY(-1px);
+}
+
+.graph-ctrl-btn.is-active {
+  background: #FEF2F2;
+  border-color: #DC2626;
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.graph-ctrl-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+}
+
+/* ==========================================================================
+   Graph Canvas & Visual Frame
+   ========================================================================== */
+.graph-canvas-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 520;
+  min-height: 480px;
+  background: radial-gradient(ellipse 90% 60% at 50% 50%, rgba(254, 242, 242, 0.5) 0%, rgba(255, 255, 255, 0.95) 70%, #FFFFFF 100%);
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+/* Subtle background grid lines for financial chart feel */
+.graph-canvas-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(229, 231, 235, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 231, 235, 0.35) 1px, transparent 1px);
+  background-size: 75px 52px;
+  background-position: center center;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.dual-focus-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+/* Radar pulse animation for circular red dot on line */
+.node-sonar-ping {
+  animation: radarSonarPulse 3.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes radarSonarPulse {
+  0% {
+    r: 6px;
+    opacity: 0.9;
+    stroke-width: 2px;
+  }
+  70% {
+    r: 22px;
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+  100% {
+    r: 24px;
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   HTML Pill Overlay Layer (Perfect Visual Alignment)
+   ========================================================================== */
+.graph-html-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.focus-node-pill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(220, 38, 38, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px -2px rgba(220, 38, 38, 0.12),
+              0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease,
+              opacity 0.25s ease;
+  z-index: 15;
+}
+
+/* Slow-Motion Cascading Transition from Up to Below */
+.is-revealed .focus-node-pill {
+  animation: pillCascadeFromAbove 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.is-revealed .pill-cascade-0 { animation-delay: 0.08s; }
+.is-revealed .pill-cascade-1 { animation-delay: 0.18s; }
+.is-revealed .pill-cascade-2 { animation-delay: 0.28s; }
+.is-revealed .pill-cascade-3 { animation-delay: 0.38s; }
+.is-revealed .pill-cascade-4 { animation-delay: 0.48s; }
+.is-revealed .pill-cascade-5 { animation-delay: 0.58s; }
+
+@keyframes pillCascadeFromAbove {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 28px));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.focus-node-pill:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  border-color: #DC2626;
+  box-shadow: 0 8px 24px -4px rgba(220, 38, 38, 0.28), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.focus-node-pill.is-selected {
+  background: #111827;
+  border-color: #DC2626;
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25),
+              0 12px 28px -4px rgba(0, 0, 0, 0.35);
+}
+
+.pill-index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #DC2626;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.focus-node-pill.is-selected .pill-index {
+  color: #F87171;
+}
+
+.pill-divider {
+  color: #D1D5DB;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+.focus-node-pill.is-selected .pill-divider {
+  color: #4B5563;
+}
+
+.pill-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1F2937;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.focus-node-pill.is-selected .pill-title {
+  color: #FFFFFF;
+}
+
+.pill-chevron {
+  stroke: #DC2626;
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+  margin-left: 0.15rem;
+}
+
+.focus-node-pill:hover .pill-chevron {
+  transform: translateX(2px);
+}
+
+.focus-node-pill.is-selected .pill-chevron {
+  stroke: #F87171;
+  transform: rotate(90deg);
+}
+
+/* Dim inactive pills when one is selected */
+.graph-html-overlay.has-active-node .focus-node-pill:not(.is-selected) {
+  opacity: 0.42;
+}
+
+/* ==========================================================================
+   Expanded Card Component (Click-to-Expand Modal)
+   ========================================================================== */
+.expanded-card-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 9999;
+  animation: fadeInBackdrop 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.expanded-card-modal {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: var(--radius-xl, 18px);
+  padding: 2.25rem 2.25rem 2rem;
+  box-shadow: 0 25px 60px -15px rgba(220, 38, 38, 0.2),
+              0 10px 30px -10px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(220, 38, 38, 0.1);
+  transform: translateY(-24px) scale(0.96);
+  opacity: 0;
+  animation: modalCascadeDown 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalCascadeDown {
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Top accent gradient line */
+.expanded-card-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #EF4444, #DC2626, #991B1B, #4C0519);
+}
+
+.expanded-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.expanded-tag-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.expanded-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background: #FEF2F2;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #DC2626;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.expanded-line-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-tertiary, #9CA3AF);
+}
+
+.expanded-line-type-indicator {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.expanded-close-btn {
+  background: #F3F4F6;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.expanded-close-btn:hover {
+  background: #FEE2E2;
+  color: #DC2626;
+  transform: rotate(90deg);
+}
+
+.expanded-title {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.expanded-desc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #4B5563;
+  margin-bottom: 1.5rem;
+}
+
+/* Criteria box */
+.expanded-criteria-block {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: var(--radius-md, 10px);
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.expanded-criteria-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #DC2626;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expanded-criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.expanded-criteria-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #374151;
+}
+
+.expanded-criteria-item svg {
+  color: #DC2626;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* Star Groups Synergy Banner */
+.expanded-synergy-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: rgba(254, 242, 242, 0.6);
+  border: 1px dashed rgba(220, 38, 38, 0.35);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.82rem;
+  color: #991B1B;
+  margin-bottom: 1.5rem;
+}
+
+.expanded-synergy-badge strong {
+  font-weight: 600;
+  color: #7F1D1D;
+}
+
+/* Footer Action Buttons */
+.expanded-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.expanded-nav-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expanded-nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.expanded-nav-arrow-btn:hover {
+  border-color: #DC2626;
+  color: #DC2626;
+}
+
+.expanded-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  background: #DC2626;
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.expanded-cta-btn:hover {
+  background: #B91C1C;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Mobile Responsive Optimizations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .graph-canvas-frame {
+    aspect-ratio: auto;
+    min-height: 480px;
+  }
+  .focus-node-pill {
+    padding: 0.35rem 0.75rem;
+  }
+  .pill-title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .dual-focus-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .expanded-card-modal {
+    padding: 1.5rem;
+  }
+  .expanded-title {
+    font-size: 1.35rem;
+  }
+  .graph-canvas-frame {
+    min-height: 460px;
+  }
+  .pill-title {
+    font-size: 0.70rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dual-focus-container,
+  .focus-node-pill,
+  .expanded-card-modal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .node-sonar-ping {
+    animation: none !important;
+  }
+}

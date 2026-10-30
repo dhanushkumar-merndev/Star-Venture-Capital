@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Investment Focus · Star Venture Capital. Exploring the 5 key domains where we deploy capital and operational capabilities." />
+  <title>Investment Focus · Star Venture Capital</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon" />
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#FAF9F6" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <a href="/index.html" class="brand-wrapper" aria-label="Star Venture Capital - Home">
+        <span class="brand-logo-surface">
+          <img class="brand-logo" src="/brand/star-venture-capital-280.png" srcset="/brand/star-venture-capital-280.png 280w, /brand/star-venture-capital-560.png 560w, /brand/star-venture-capital-840.png 840w" sizes="(max-width: 768px) 188px, 220px" width="3083" height="573" alt="Star Venture Capital" loading="eager" decoding="async" />
+        </span>
+      </a>
+
+      <nav class="nav-desktop" role="navigation" aria-label="Main Navigation">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/approach.html" class="nav-link">Approach</a>
+        <a href="/focus.html" class="nav-link is-current" aria-current="page">Investment Focus</a>
+        <a href="/capabilities.html" class="nav-link">Capabilities</a>
+        <a href="/portfolio.html" class="nav-link">Portfolio</a>
+        <a href="/process.html" class="nav-link">Process</a>
+        <a href="/governance.html" class="nav-link">Governance</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/enquiry.html" class="btn btn-primary" id="headerCtaBtn">Founder Enquiry</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile Navigation">
+      <a href="/index.html" class="nav-link">Home</a>
+      <a href="/approach.html" class="nav-link">Approach</a>
+      <a href="/focus.html" class="nav-link is-current">Investment Focus</a>
+      <a href="/capabilities.html" class="nav-link">Star Groups Capabilities</a>
+      <a href="/portfolio.html" class="nav-link">Portfolio</a>
+      <a href="/process.html" class="nav-link">Investment Process</a>
+      <a href="/governance.html" class="nav-link">Governance</a>
+      <a href="/enquiry.html" class="btn btn-primary" style="margin-top: 0.5rem; text-align: center;">Founder Enquiry</a>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- Page Header Banner -->
+    <section class="page-hero-section">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="/index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Investment Focus</span>
+        </nav>
+        <div class="section-badge">Strategic Domains</div>
+        <h1 class="page-headline">Where we focus our capital and conviction.</h1>
+        <p class="page-lead">
+          We back category-defining enterprises where technology and operational moats converge to create defensible, enduring businesses.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interactive Dual-Line Investment Trajectory & Focus Graph -->
+    <section class="section" id="focusTrajectorySection" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+      <div class="container">
+        <div style="max-width: 860px; margin-bottom: 2rem;">
+          <div class="section-badge">Interactive Trajectory Graph</div>
+          <h2 class="section-title">Six Strategic Focus Domains Across Dual Market Trajectories.</h2>
+          <p class="section-subtitle">
+            Explore our six core investment domains woven across bold and fluid harmonic lines. Click any circular red node or tag pill to expand thesis details, key evaluation fit criteria, and Star Groups capability synergies.
+          </p>
+        </div>
+
+        <!-- React Mount for DualLineFocusGraph -->
+        <div id="lineFocusGraphMount"></div>
+
+        <!-- Accessible Semantic Fallback for Screen Readers & Non-JS -->
+        <noscript>
+          <div class="focus-grid" style="margin-top: 2rem;">
+            <div class="focus-card">
+              <span class="focus-tag">01 · Digital Core</span>
+              <h2 class="focus-card-title">Enterprise Software & Workflows</h2>
+              <p class="focus-card-desc">Vertical SaaS, intelligent workflow automation, CRM/HRMS architectures, and proprietary business tooling that power modern enterprise productivity.</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-tag">02 · Consumer & Commerce</span>
+              <h2 class="focus-card-title">Brand Tech & Consumer Platforms</h2>
+              <p class="focus-card-desc">Technology-enabled direct-to-consumer platforms, digital commerce infrastructure, and high-engagement consumer experiences.</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-tag">03 · Media & Culture</span>
+              <h2 class="focus-card-title">Media Production & Creative Tech</h2>
+              <p class="focus-card-desc">Digital storytelling platforms, production automation, modern content distribution channels, and rich-media interactive technologies.</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-tag">04 · Built Environment</span>
+              <h2 class="focus-card-title">Tech-Enabled Spaces & Interiors</h2>
+              <p class="focus-card-desc">Smart workspace solutions, commercial architectural tech, IoT-integrated building design, and modular commercial interior ecosystems.</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-tag">05 · Eco & Sustainability</span>
+              <h2 class="focus-card-title">Sustainable Living & Eco Infrastructure</h2>
+              <p class="focus-card-desc">Vertical biophilic designs, commercial plant ecosystems, urban greening, and environmental maintenance tech for forward-looking developments.</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-tag">06 · Fintech & Capital Rails</span>
+              <h2 class="focus-card-title">Financial Infrastructure & Capital Rails</h2>
+              <p class="focus-card-desc">Next-generation institutional liquidity rails, compliance automation, alternative lending engines, and embedded capital workflows driving modern enterprise commerce.</p>
+            </div>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- Company Fit & Evaluation Criteria -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-badge">Evaluation Criteria</div>
+        <h2 class="section-title">What we evaluate in founding teams.</h2>
+        <p class="section-subtitle">
+          We look beyond pitch decks to evaluate the fundamentals that allow a venture to scale through market cycles.
+        </p>
+
+        <div class="at-a-glance-grid">
+          <div class="glance-card">
+            <div class="glance-card-top">
+              <span class="glance-category">Dimension 01</span>
+              <span class="glance-badge">Founder Fit</span>
+            </div>
+            <h3 class="glance-title">Customer Obsession</h3>
+            <p class="glance-detail">
+              Founders with deep domain empathy who understand customer pain points at an intuitive, granular level and move rapidly on customer feedback.
+            </p>
+          </div>
+
+          <div class="glance-card">
+            <div class="glance-card-top">
+              <span class="glance-category">Dimension 02</span>
+              <span class="glance-badge">Moat</span>
+            </div>
+            <h3 class="glance-title">Defensible Edge</h3>
+            <p class="glance-detail">
+              Clear structural moats—whether through proprietary data assets, network effects, high switching costs, or unique ecosystem integration.
+            </p>
+          </div>
+
+          <div class="glance-card">
+            <div class="glance-card-top">
+              <span class="glance-category">Dimension 03</span>
+              <span class="glance-badge">Economics</span>
+            </div>
+            <h3 class="glance-title">Capital Discipline</h3>
+            <p class="glance-detail">
+              A clear path to sustainable unit economics, prudent burn rates, and resilience against volatile macro funding environments.
+            </p>
+          </div>
+
+          <div class="glance-card">
+            <div class="glance-card-top">
+              <span class="glance-category">Dimension 04</span>
+              <span class="glance-badge">Synergy</span>
+            </div>
+            <h3 class="glance-title">Ecosystem Acceleration</h3>
+            <p class="glance-detail">
+              Venture models that can uniquely benefit from optional strategic collaboration with Star Groups companies in tech, media, and built spaces.
+            </p>
+          </div>
+        </div>
+
+        <div class="subpage-cta-banner">
+          <div class="subpage-cta-content">
+            <h2 class="subpage-cta-title">See our Star Groups ecosystem.</h2>
+            <p class="subpage-cta-desc">
+              Learn how our lineage within Star Groups connects portfolio founders with specialized enterprise execution capabilities.
+            </p>
+            <a href="/capabilities.html" class="btn btn-primary" style="background:#DC2626; color:#FFFFFF;">
+              <span>Explore Group Capabilities</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <a href="/index.html" class="brand-wrapper" aria-label="Star Venture Capital - Home">
+            <img class="brand-logo" src="/brand/star-venture-capital-280.png" srcset="/brand/star-venture-capital-280.png 280w, /brand/star-venture-capital-560.png 560w, /brand/star-venture-capital-840.png 840w" sizes="(max-width: 480px) 240px, 280px" width="3083" height="573" alt="Star Venture Capital" loading="lazy" decoding="async" />
+            <span class="brand-relationship">A Star Groups company</span>
+          </a>
+          <p class="footer-desc">
+            An independent investment entity under the Star Groups umbrella, backing ambitious founders building category-defining enterprises with enduring moats.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <ul class="footer-links-list">
+            <li><a href="/index.html" class="footer-link">Home</a></li>
+            <li><a href="/approach.html" class="footer-link">Approach & Philosophy</a></li>
+            <li><a href="/focus.html" class="footer-link">Investment Focus Sectors</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Groups Ecosystem</a></li>
+            <li><a href="/portfolio.html" class="footer-link">Portfolio Tracks</a></li>
+            <li><a href="/process.html" class="footer-link">Investment Process</a></li>
+            <li><a href="/governance.html" class="footer-link">Governance & Oversight</a></li>
+            <li><a href="/enquiry.html" class="footer-link">Founder Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Star Groups Network</div>
+          <ul class="footer-links-list">
+            <li><a href="/capabilities.html" class="footer-link">StarTech India (Tech & Automation)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Growth Hub (Brand & Growth)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Production (Media & Content)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Garden (Biophilic Landscaping)</a></li>
+            <li><a href="/capabilities.html" class="footer-link">Star Space Interiors (Modern Workspaces)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © <span id="yearSpan">2026</span> Star Venture Capital. All rights reserved.
+        </div>
+        <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top of page">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer-disclaimer-text">
+        <strong>Regulatory & Investment Disclaimer:</strong> This website is for informational and educational purposes only and does not constitute an offer to sell or the solicitation of an offer to purchase any security or investment product. Star Venture Capital acts as an independent investment entity. Information regarding portfolio and group companies is subject to change without notice.
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/scripts/focus.js"></script>
+</body>
+</html>
