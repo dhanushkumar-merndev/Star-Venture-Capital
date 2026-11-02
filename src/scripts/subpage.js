@@ -2,7 +2,12 @@
  * Star Venture Capital — General Sub-page Controller
  */
 
+import { initSmoothScroll } from "./smoothScroll.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // Header scroll state
   const header = document.querySelector(".site-header");
   window.addEventListener("scroll", () => {

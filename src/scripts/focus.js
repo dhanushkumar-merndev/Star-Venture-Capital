@@ -3,8 +3,12 @@
  */
 
 import { mountLineFocusGraph } from '../components/mountLineFocusGraph.jsx';
+import { initSmoothScroll } from './smoothScroll.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // Mount the interactive Dual-Line Focus Graph
   const graphMount = document.getElementById('lineFocusGraphMount');
   if (graphMount) {

@@ -5,6 +5,7 @@ import sharp from "sharp";
 // Keep the official artwork intact. Only resize and strip export metadata.
 const path = (relative) => fileURLToPath(new URL(relative, import.meta.url));
 const logo = path("../assets/brand/star-venture-capital-original.png");
+const darkLogo = path("../assets/brand/star-venture-capital-dark-transparent.png");
 const symbol = path("../assets/brand/star-symbol-original.png");
 const publicDir = path("../public/");
 const brandDir = path("../public/brand/");
@@ -16,6 +17,11 @@ for (const width of [280, 560, 840]) {
     .resize({ width, withoutEnlargement: true })
     .png({ compressionLevel: 9, effort: 10 })
     .toFile(`${brandDir}/star-venture-capital-${width}.png`);
+
+  await sharp(darkLogo)
+    .resize({ width, withoutEnlargement: true })
+    .png({ compressionLevel: 9, effort: 10 })
+    .toFile(`${brandDir}/star-venture-capital-dark-${width}.png`);
 }
 
 const iconFiles = new Map([

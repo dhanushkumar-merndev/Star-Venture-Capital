@@ -4,8 +4,12 @@
 
 import { siteConfig } from "../data/ventureData.js";
 import { initCardSwap } from "./cardSwap.js";
+import { initSmoothScroll } from "./smoothScroll.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // Initialize Card Swap Deck
   initCardSwap(siteConfig.approach.cards);
 

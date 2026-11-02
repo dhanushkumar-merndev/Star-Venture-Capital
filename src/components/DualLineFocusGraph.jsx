@@ -23,13 +23,13 @@ export const FOCUS_SECTORS = [
     synergy: "StarTech India · Enterprise Systems & Workflow Automation",
     enquirySector: "Enterprise Software & Workflows",
     themeColor: "#DC2626",
-    xRatio: 0.13,
+    xRatio: 0.125,
   },
   {
     id: "brand-consumer",
     index: "02",
-    lineType: "thin",
-    edge: "bottom", // tag pill positioned below valley
+    lineType: "bold",
+    edge: "bottom", // tag pill positioned below trough
     tag: "Consumer & Commerce",
     title: "Brand Tech & Consumer Platforms",
     shortTitle: "Brand & Commerce",
@@ -42,7 +42,7 @@ export const FOCUS_SECTORS = [
     synergy: "Star Growth Hub · Brand Identity & Performance Marketing",
     enquirySector: "Brand & Consumer Tech",
     themeColor: "#E11D48",
-    xRatio: 0.28,
+    xRatio: 0.283,
   },
   {
     id: "creative-media",
@@ -61,13 +61,13 @@ export const FOCUS_SECTORS = [
     synergy: "Star Production · Cinematic Media & Video Storytelling",
     enquirySector: "Media & Content Production Tech",
     themeColor: "#991B1B",
-    xRatio: 0.44,
+    xRatio: 0.442,
   },
   {
     id: "built-spaces",
     index: "04",
-    lineType: "thin",
-    edge: "bottom", // tag pill positioned below valley
+    lineType: "bold",
+    edge: "bottom", // tag pill positioned below trough
     tag: "Built Environment",
     title: "Tech-Enabled Spaces & Interiors",
     shortTitle: "Tech-Enabled Spaces",
@@ -80,7 +80,7 @@ export const FOCUS_SECTORS = [
     synergy: "Star Space Interiors · High-Performance Workspaces",
     enquirySector: "Built Environment & Space Tech",
     themeColor: "#701A75",
-    xRatio: 0.59,
+    xRatio: 0.600,
   },
   {
     id: "eco-landscapes",
@@ -99,13 +99,13 @@ export const FOCUS_SECTORS = [
     synergy: "Star Garden · Biophilic Architecture & Sustainable Landscaping",
     enquirySector: "Sustainable Living & Eco Infrastructure",
     themeColor: "#4C0519",
-    xRatio: 0.74,
+    xRatio: 0.758,
   },
   {
     id: "fintech-rails",
     index: "06",
-    lineType: "thin",
-    edge: "bottom", // tag pill positioned below valley
+    lineType: "bold",
+    edge: "bottom", // tag pill positioned below trough
     tag: "Fintech & Capital Rails",
     title: "Financial Infrastructure & Capital Rails",
     shortTitle: "Fintech & Capital Rails",
@@ -118,7 +118,7 @@ export const FOCUS_SECTORS = [
     synergy: "Star Capital Syndicate · Institutional Co-Investment Network",
     enquirySector: "Other Transformative Industry",
     themeColor: "#3B0764",
-    xRatio: 0.88,
+    xRatio: 0.917,
   },
 ];
 
@@ -139,9 +139,9 @@ export default function DualLineFocusGraph({
     thinPath: '',
     nodes: sectors.map((s) => ({
       x: s.xRatio * 1200,
-      dotY: 260,
-      pillY: s.edge === 'top' ? 200 : 320,
-      tetherEndY: s.edge === 'top' ? 218 : 302,
+      dotY: s.edge === 'top' ? 178 : 342,
+      pillY: s.edge === 'top' ? 122 : 398,
+      tetherEndY: s.edge === 'top' ? 140 : 380,
     })),
   });
 
@@ -200,15 +200,19 @@ export default function DualLineFocusGraph({
   /**
    * 60fps Mathematical Animation Loop
    * - SVG ViewBox: 1200 x 520
-   * - Line 1 (Bold): Oscillates with forward phase (+t * 0.00030)
-   * - Line 2 (Thin): Oscillates with counter phase (-t * 0.00026)
-   * - Perfectly aligned vertical math for every red dot & HTML pill
+   * - Line 1 (Bold): Pure harmonic sine wave with strictly alternating peaks & troughs
+   * - Line 2 (Thin): Exact counter-phase harmonic wave (DNA double-helix structure)
+   * - Symmetrical rigid motion: When Line 1 moves UP, Line 2 moves DOWN in the same opposite direction
+   * - Zero unwanted secondary waves or chaotic multi-frequency interference
    */
   useEffect(() => {
     const svgWidth = 1200;
     const svgHeight = 520;
-    const numPoints = 18;
+    const numPoints = 48; // Smooth 48-point resolution for clean curvature
     const stepX = svgWidth / (numPoints - 1);
+    const lambda = 380;
+    const k = (2 * Math.PI) / lambda;
+    const phi0 = 150 * k - Math.PI / 2; // Anchors Station 1 at exact mathematical peak
 
     const animate = (timestamp) => {
       if (!lastTimeRef.current) lastTimeRef.current = timestamp;
@@ -223,25 +227,30 @@ export default function DualLineFocusGraph({
       const activeSpeed = expandedIndex !== null ? 0.25 : 1.0;
       const effectiveT = t * activeSpeed;
 
-      // 1. Calculate Bold Line Points (Line A: moves forward +phase)
+      // Symmetrical rigid vertical motion (Lines move upward and downward, not an amplitude breath effect)
+      // Fixed rigid amplitude — curvature stays perfectly consistent
+      const baseAmp = 82;
+      // Rigid vertical translation (Line 1 translates upward while Line 2 translates downward, and vice-versa)
+      const vertShift = 22 * Math.sin(effectiveT * 0.0016);
+      const phaseRock = phi0;
+
+      // 1. Calculate Bold Line Points (Line 1: primary trajectory moving upward and downward)
       const boldPoints = [];
       for (let i = 0; i < numPoints; i++) {
         const x = i * stepX;
-        // Harmonic waves creating peaks near indices 2 (x~140), 8 (x~550), 14 (x~950)
-        const wave1 = Math.sin(i * 0.88 + effectiveT * 0.00035) * 85;
-        const wave2 = Math.cos(i * 1.5 - effectiveT * 0.00020) * 26;
-        const y = 260 - wave1 + wave2;
+        const theta = k * x - phaseRock;
+        const sinVal = Math.sin(theta);
+        const y = 260 - vertShift - baseAmp * sinVal;
         boldPoints.push({ x, y });
       }
 
-      // 2. Calculate Thin Line Points (Line B: moves in counter direction -phase)
+      // 2. Calculate Thin Line Points (Line 2: counter-directional DNA strand moving in opposite vertical direction)
       const thinPoints = [];
       for (let i = 0; i < numPoints; i++) {
         const x = i * stepX;
-        // Counter-harmonic waves creating valleys near indices 5 (x~330), 11 (x~730), 16 (x~1080)
-        const wave1 = Math.sin(i * 0.82 - effectiveT * 0.00032 + 1.85) * 88;
-        const wave2 = Math.cos(i * 1.62 + effectiveT * 0.00024 + 0.95) * 28;
-        const y = 270 + wave1 + wave2;
+        const theta = k * x - phaseRock;
+        const sinVal = Math.sin(theta);
+        const y = 260 + vertShift + baseAmp * sinVal;
         thinPoints.push({ x, y });
       }
 
@@ -268,34 +277,21 @@ export default function DualLineFocusGraph({
       const boldPath = createSplinePath(boldPoints);
       const thinPath = createSplinePath(thinPoints);
 
-      // Interpolate exact Y coordinate along line for any X
-      const interpolateY = (pts, targetX) => {
-        for (let i = 0; i < pts.length - 1; i++) {
-          if (targetX >= pts[i].x && targetX <= pts[i + 1].x) {
-            const fraction = (targetX - pts[i].x) / (pts[i + 1].x - pts[i].x);
-            // Smooth hermite cubic blend between points
-            const h = fraction * fraction * (3 - 2 * fraction);
-            return pts[i].y + (pts[i + 1].y - pts[i].y) * h;
-          }
-        }
-        return pts[0].y;
-      };
-
       // 3. Compute dynamic, perfectly aligned positions for each sector
+      // Strictly alternating pattern: Odd sectors (01, 03, 05) sit ABOVE on crests; Even sectors (02, 04, 06) sit BELOW on troughs
       const nodes = sectors.map((sector) => {
         const targetX = sector.xRatio * svgWidth;
-        const isBold = sector.lineType === 'bold';
-        const sourcePoints = isBold ? boldPoints : thinPoints;
-        const dotY = interpolateY(sourcePoints, targetX);
+        const theta = k * targetX - phaseRock;
+        const sinVal = Math.sin(theta);
+        // Rigid vertical translation with the bold line:
+        // Crests (01, 03, 05): dotY = (260 - baseAmp) - vertShift (ABOVE)
+        // Troughs (02, 04, 06): dotY = (260 + baseAmp) - vertShift (BELOW)
+        const dotY = 260 - vertShift - baseAmp * sinVal;
 
         const isTop = sector.edge === 'top';
-        // Distance between dot on line and pill center
         const offset = 56;
         const rawPillY = isTop ? dotY - offset : dotY + offset;
-        // Clamp pill so it always remains comfortably visible inside the frame
         const pillY = Math.max(34, Math.min(svgHeight - 34, rawPillY));
-
-        // Tether line connects from the dot (dotY) to the pill border
         const tetherEndY = isTop ? pillY + 18 : pillY - 18;
 
         return {
@@ -470,7 +466,7 @@ export default function DualLineFocusGraph({
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                opacity={expandedIndex !== null && sectors[expandedIndex].lineType !== 'thin' ? 0.25 : 0.88}
+                opacity={expandedIndex !== null ? 0.35 : 0.88}
                 style={{ transition: 'opacity 0.3s ease' }}
               />
             )}
@@ -485,7 +481,7 @@ export default function DualLineFocusGraph({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 filter="url(#boldLineGlow)"
-                opacity={expandedIndex !== null && sectors[expandedIndex].lineType !== 'bold' ? 0.28 : 1}
+                opacity={1}
                 style={{ transition: 'opacity 0.3s ease' }}
               />
             )}
@@ -623,11 +619,11 @@ export default function DualLineFocusGraph({
                     <span className="expanded-line-type">
                       <span
                         className={`expanded-line-type-indicator ${
-                          activeSector.lineType === 'bold' ? 'bold-line' : 'thin-line'
+                          activeSector.edge === 'top' ? 'bold-line' : 'thin-line'
                         }`}
                         aria-hidden="true"
                       ></span>
-                      {activeSector.lineType === 'bold' ? 'Bold Trajectory' : 'Thin Harmonic Wave'}
+                      {activeSector.edge === 'top' ? 'Ascent Crest Trajectory' : 'Foundation Valley Trajectory'}
                     </span>
                   </div>
 

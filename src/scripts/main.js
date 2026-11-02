@@ -9,8 +9,12 @@ import { mountDepthText, VENTURE_PHRASES } from "../components/mountDepthText.js
 import { initCardSwap } from "./cardSwap.js";
 import { initEnquiryForm } from "./enquiryForm.js";
 import { mountWaveMatrix } from "../components/mountWaveMatrix.jsx";
+import { initSmoothScroll } from "./smoothScroll.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 0. Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // 1. Initialize Full-Bleed Currency Gradient ASCII Canvas
   const asciiBackdrop = document.getElementById("heroAsciiBackdrop");
   let asciiInstance = null;

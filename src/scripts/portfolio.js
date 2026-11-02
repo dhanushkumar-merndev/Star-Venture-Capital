@@ -2,7 +2,12 @@
  * Star Venture Capital — Portfolio Page Controller
  */
 
+import { initSmoothScroll } from "./smoothScroll.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // Portfolio Filtering
   const portfolioTabs = document.querySelectorAll(".portfolio-tab-btn");
   const portfolioCards = document.querySelectorAll(".portfolio-card");

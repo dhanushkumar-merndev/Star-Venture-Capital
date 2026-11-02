@@ -4,8 +4,12 @@
 
 import { siteConfig } from "../data/ventureData.js";
 import { initEnquiryForm } from "./enquiryForm.js";
+import { initSmoothScroll } from "./smoothScroll.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Lenis Smooth Scroll
+  initSmoothScroll();
+
   // Initialize Form Controller
   initEnquiryForm(siteConfig.enquiry);
 
