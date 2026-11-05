@@ -1,7 +1,18 @@
 /* ==========================================================================
    Venture Capital Operating Matrix — Star Red & Crisp White Theme
-   Crisp White Canvas, Star Red Accents (#DC2626), Clean Institutional Typography
+   Crisp White Canvas, Star Red Accents (#DC2626), 100% Mobile Responsive Layouts
    ========================================================================== */
+
+/* Embed Section Wrapper */
+.vc-app-embed-section {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: #ffffff;
+}
 
 /* --------------------------------------------------------------------------
    Root Container & Color Tokens
@@ -9,6 +20,7 @@
 #venture-capital-matrix {
   position: relative;
   width: 100%;
+  max-width: 100%;
   background-color: #ffffff;
   color: #0f172a; /* text-slate-900 */
   border-top: 1px solid #e2e8f0;
@@ -47,11 +59,12 @@
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
-#venture-capital-matrix .py-14 {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+#venture-capital-matrix .py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 #venture-capital-matrix .px-4 {
@@ -64,9 +77,9 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  #venture-capital-matrix .sm\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+  #venture-capital-matrix .sm\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -74,6 +87,10 @@
   #venture-capital-matrix .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  #venture-capital-matrix .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -83,6 +100,8 @@
 #venture-capital-matrix .flex { display: flex; }
 #venture-capital-matrix .inline-flex { display: inline-flex; }
 #venture-capital-matrix .flex-col { flex-direction: column; }
+#venture-capital-matrix .flex-wrap { flex-wrap: wrap; }
+#venture-capital-matrix .flex-1 { flex: 1 1 0%; }
 #venture-capital-matrix .items-center { align-items: center; }
 #venture-capital-matrix .items-start { align-items: flex-start; }
 #venture-capital-matrix .items-end { align-items: flex-end; }
@@ -95,13 +114,18 @@
 
 @media (min-width: 640px) {
   #venture-capital-matrix .sm\:flex-row { flex-direction: row; }
+  #venture-capital-matrix .sm\:flex-none { flex: none; }
   #venture-capital-matrix .sm\:items-center { align-items: center; }
+  #venture-capital-matrix .sm\:justify-start { justify-content: flex-start; }
   #venture-capital-matrix .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #venture-capital-matrix .sm\:inline-flex { display: inline-flex; }
+  #venture-capital-matrix .sm\:w-auto { width: auto; }
 }
 
 @media (min-width: 768px) {
   #venture-capital-matrix .md\:flex-row { flex-direction: row; }
   #venture-capital-matrix .md\:items-end { align-items: flex-end; }
+  #venture-capital-matrix .md\:w-auto { width: auto; }
   #venture-capital-matrix .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -117,19 +141,36 @@
 
 #venture-capital-matrix .col-span-2 { grid-column: span 2 / span 2; }
 
-/* Gap Spacing */
+/* Responsive Gaps */
+#venture-capital-matrix .gap-1 { gap: 0.25rem; }
 #venture-capital-matrix .gap-1\.5 { gap: 0.375rem; }
 #venture-capital-matrix .gap-2 { gap: 0.5rem; }
 #venture-capital-matrix .gap-2\.5 { gap: 0.625rem; }
 #venture-capital-matrix .gap-3 { gap: 0.75rem; }
+#venture-capital-matrix .gap-3\.5 { gap: 0.875rem; }
 #venture-capital-matrix .gap-4 { gap: 1rem; }
+#venture-capital-matrix .gap-5 { gap: 1.25rem; }
 #venture-capital-matrix .gap-6 { gap: 1.5rem; }
 
-#venture-capital-matrix .space-y-3 { margin-top: 0; }
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:gap-2 { gap: 0.5rem; }
+  #venture-capital-matrix .sm\:gap-3 { gap: 0.75rem; }
+  #venture-capital-matrix .sm\:gap-4 { gap: 1rem; }
+  #venture-capital-matrix .sm\:gap-6 { gap: 1.5rem; }
+}
+
+#venture-capital-matrix .space-y-2\.5 > * + * { margin-top: 0.625rem; }
 #venture-capital-matrix .space-y-3 > * + * { margin-top: 0.75rem; }
 #venture-capital-matrix .space-y-3\.5 > * + * { margin-top: 0.875rem; }
 #venture-capital-matrix .space-y-4 > * + * { margin-top: 1rem; }
-#venture-capital-matrix .space-y-6 > * + * { margin-top: 1.5rem; }
+#venture-capital-matrix .space-y-5 > * + * { margin-top: 1.25rem; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:space-y-3 > * + * { margin-top: 0.75rem; }
+  #venture-capital-matrix .sm\:space-y-3\.5 > * + * { margin-top: 0.875rem; }
+  #venture-capital-matrix .sm\:space-y-4 > * + * { margin-top: 1rem; }
+  #venture-capital-matrix .sm\:space-y-6 > * + * { margin-top: 1.5rem; }
+}
 
 /* --------------------------------------------------------------------------
    Surfaces & Backgrounds (Red & White Theme)
@@ -141,7 +182,7 @@
 #venture-capital-matrix .bg-slate-50\/80 { background-color: rgba(248, 250, 252, 0.8); }
 
 #venture-capital-matrix .bg-slate-100 { background-color: #f1f5f9; }
-#venture-capital-matrix .bg-slate-100\/80 { background-color: rgba(241, 245, 249, 0.8); }
+#venture-capital-matrix .bg-slate-100\/90 { background-color: rgba(241, 245, 249, 0.9); }
 #venture-capital-matrix .bg-slate-200 { background-color: #e2e8f0; }
 
 #venture-capital-matrix .bg-red-50 { background-color: #fef2f2; }
@@ -174,7 +215,7 @@
 #venture-capital-matrix .border-\[\#DC2626\] { border-color: #dc2626; }
 
 /* --------------------------------------------------------------------------
-   Typography Tokens
+   Typography Tokens & Mobile Responsiveness
    -------------------------------------------------------------------------- */
 #venture-capital-matrix .text-slate-900 { color: #0f172a; }
 #venture-capital-matrix .text-slate-800 { color: #1e293b; }
@@ -196,19 +237,25 @@
 #venture-capital-matrix .tracking-tight { letter-spacing: -0.025em; }
 #venture-capital-matrix .tracking-wider { letter-spacing: 0.05em; }
 #venture-capital-matrix .tracking-widest { letter-spacing: 0.15em; }
+#venture-capital-matrix .break-words { word-break: break-word; }
 
+#venture-capital-matrix .text-\[9px\] { font-size: 9px; line-height: 12px; }
 #venture-capital-matrix .text-\[10px\] { font-size: 10px; line-height: 14px; }
-#venture-capital-matrix .text-\[11px\] { font-size: 11px; line-height: 16px; }
+#venture-capital-matrix .text-\[11px\] { font-size: 11px; line-height: 15px; }
 #venture-capital-matrix .text-xs { font-size: 0.75rem; line-height: 1rem; }
 #venture-capital-matrix .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
 #venture-capital-matrix .text-base { font-size: 1rem; line-height: 1.5rem; }
 #venture-capital-matrix .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
 #venture-capital-matrix .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-#venture-capital-matrix .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-#venture-capital-matrix .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+#venture-capital-matrix .text-2xl { font-size: 1.35rem; line-height: 1.75rem; }
 
 @media (min-width: 640px) {
+  #venture-capital-matrix .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; }
+  #venture-capital-matrix .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  #venture-capital-matrix .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+  #venture-capital-matrix .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
   #venture-capital-matrix .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+  #venture-capital-matrix .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
   #venture-capital-matrix .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
 }
 
@@ -216,8 +263,20 @@
   #venture-capital-matrix .lg\:text-5xl { font-size: 3rem; line-height: 1.05; }
 }
 
+#venture-capital-matrix .leading-tight { line-height: 1.15; }
 #venture-capital-matrix .leading-none { line-height: 1; }
 #venture-capital-matrix .leading-relaxed { line-height: 1.625; }
+
+/* --------------------------------------------------------------------------
+   Visibility Utilities
+   -------------------------------------------------------------------------- */
+#venture-capital-matrix .hidden { display: none; }
+#venture-capital-matrix .inline { display: inline; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:hidden { display: none; }
+  #venture-capital-matrix .sm\:inline { display: inline; }
+}
 
 /* --------------------------------------------------------------------------
    Radii, Padding & Shadow Elevation
@@ -238,50 +297,92 @@
 #venture-capital-matrix .p-3\.5 { padding: 0.875rem; }
 #venture-capital-matrix .p-4 { padding: 1rem; }
 #venture-capital-matrix .p-5 { padding: 1.25rem; }
-#venture-capital-matrix .p-6 { padding: 1.5rem; }
 
 @media (min-width: 640px) {
+  #venture-capital-matrix .sm\:p-3 { padding: 0.75rem; }
+  #venture-capital-matrix .sm\:p-4 { padding: 1rem; }
+  #venture-capital-matrix .sm\:p-5 { padding: 1.25rem; }
   #venture-capital-matrix .sm\:p-7 { padding: 1.75rem; }
   #venture-capital-matrix .sm\:p-8 { padding: 2rem; }
 }
 
+#venture-capital-matrix .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+#venture-capital-matrix .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
 #venture-capital-matrix .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+#venture-capital-matrix .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
 #venture-capital-matrix .px-4 { padding-left: 1rem; padding-right: 1rem; }
-#venture-capital-matrix .px-7 { padding-left: 1.75rem; padding-right: 1.75rem; }
+#venture-capital-matrix .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+  #venture-capital-matrix .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+  #venture-capital-matrix .sm\:px-7 { padding-left: 1.75rem; padding-right: 1.75rem; }
+}
 
 #venture-capital-matrix .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
-#venture-capital-matrix .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
-#venture-capital-matrix .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+#venture-capital-matrix .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+#venture-capital-matrix .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+  #venture-capital-matrix .sm\:py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+}
 
 #venture-capital-matrix .pb-3 { padding-bottom: 0.75rem; }
+#venture-capital-matrix .pb-3\.5 { padding-bottom: 0.875rem; }
 #venture-capital-matrix .pb-4 { padding-bottom: 1rem; }
 #venture-capital-matrix .pb-5 { padding-bottom: 1.25rem; }
 #venture-capital-matrix .pb-6 { padding-bottom: 1.5rem; }
-#venture-capital-matrix .pb-8 { padding-bottom: 2rem; }
 
-#venture-capital-matrix .pt-3 { padding-top: 0.75rem; }
-#venture-capital-matrix .pt-5 { padding-top: 1.25rem; }
-#venture-capital-matrix .pt-8 { padding-top: 2rem; }
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:pb-4 { padding-bottom: 1rem; }
+  #venture-capital-matrix .sm\:pb-5 { padding-bottom: 1.25rem; }
+  #venture-capital-matrix .sm\:pb-6 { padding-bottom: 1.5rem; }
+  #venture-capital-matrix .sm\:pb-8 { padding-bottom: 2rem; }
+}
+
+#venture-capital-matrix .pt-2\.5 { padding-top: 0.625rem; }
+#venture-capital-matrix .pt-4 { padding-top: 1rem; }
+#venture-capital-matrix .pt-6 { padding-top: 1.5rem; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:pt-3 { padding-top: 0.75rem; }
+  #venture-capital-matrix .sm\:pt-5 { padding-top: 1.25rem; }
+  #venture-capital-matrix .sm\:pt-8 { padding-top: 2rem; }
+}
 
 #venture-capital-matrix .mt-0\.5 { margin-top: 0.125rem; }
 #venture-capital-matrix .mt-1 { margin-top: 0.25rem; }
+#venture-capital-matrix .mt-1\.5 { margin-top: 0.375rem; }
 #venture-capital-matrix .mt-2 { margin-top: 0.5rem; }
+#venture-capital-matrix .mt-2\.5 { margin-top: 0.625rem; }
 #venture-capital-matrix .mt-3 { margin-top: 0.75rem; }
 #venture-capital-matrix .mt-4 { margin-top: 1rem; }
 #venture-capital-matrix .mt-5 { margin-top: 1.25rem; }
 #venture-capital-matrix .mt-6 { margin-top: 1.5rem; }
-#venture-capital-matrix .mt-7 { margin-top: 1.75rem; }
-#venture-capital-matrix .mt-8 { margin-top: 2rem; }
-#venture-capital-matrix .mt-12 { margin-top: 3rem; }
+#venture-capital-matrix .mt-10 { margin-top: 2.5rem; }
 
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:mt-1 { margin-top: 0.25rem; }
+  #venture-capital-matrix .sm\:mt-2 { margin-top: 0.5rem; }
+  #venture-capital-matrix .sm\:mt-3 { margin-top: 0.75rem; }
+  #venture-capital-matrix .sm\:mt-5 { margin-top: 1.25rem; }
+  #venture-capital-matrix .sm\:mt-6 { margin-top: 1.5rem; }
+  #venture-capital-matrix .sm\:mt-7 { margin-top: 1.75rem; }
+  #venture-capital-matrix .sm\:mt-8 { margin-top: 2rem; }
+  #venture-capital-matrix .sm\:mt-12 { margin-top: 3rem; }
+}
+
+#venture-capital-matrix .mb-0\.5 { margin-bottom: 0.125rem; }
 #venture-capital-matrix .mb-1 { margin-bottom: 0.25rem; }
 #venture-capital-matrix .mb-1\.5 { margin-bottom: 0.375rem; }
 #venture-capital-matrix .mb-2 { margin-bottom: 0.5rem; }
-#venture-capital-matrix .mb-3 { margin-bottom: 0.75rem; }
 
 #venture-capital-matrix .w-full { width: 100%; }
+#venture-capital-matrix .max-w-full { max-width: 100%; }
 #venture-capital-matrix .w-1\.5 { width: 0.375rem; }
 #venture-capital-matrix .w-2 { width: 0.5rem; }
+#venture-capital-matrix .w-3\.5 { width: 0.875rem; }
 #venture-capital-matrix .w-4 { width: 1rem; }
 #venture-capital-matrix .w-5 { width: 1.25rem; }
 #venture-capital-matrix .w-10 { width: 2.5rem; }
@@ -289,12 +390,27 @@
 #venture-capital-matrix .h-full { height: 100%; }
 #venture-capital-matrix .h-1\.5 { height: 0.375rem; }
 #venture-capital-matrix .h-2 { height: 0.5rem; }
+#venture-capital-matrix .h-3\.5 { height: 0.875rem; }
 #venture-capital-matrix .h-4 { height: 1rem; }
 #venture-capital-matrix .h-5 { height: 1.25rem; }
 #venture-capital-matrix .h-6 { height: 1.5rem; }
 #venture-capital-matrix .h-10 { height: 2.5rem; }
 
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:w-4 { width: 1rem; }
+  #venture-capital-matrix .sm\:w-5 { width: 1.25rem; }
+  #venture-capital-matrix .sm\:h-4 { height: 1rem; }
+  #venture-capital-matrix .sm\:h-5 { height: 1.25rem; }
+  #venture-capital-matrix .sm\:h-6 { height: 1.5rem; }
+}
+
 #venture-capital-matrix .shrink-0 { flex-shrink: 0; }
+#venture-capital-matrix .text-center { text-align: center; }
+#venture-capital-matrix .text-left { text-align: left; }
+
+@media (min-width: 640px) {
+  #venture-capital-matrix .sm\:text-right { text-align: right; }
+}
 
 /* --------------------------------------------------------------------------
    Buttons & Links

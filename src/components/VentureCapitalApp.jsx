@@ -73,7 +73,7 @@ export const STAGE_DATA = [
     metrics: [
       { label: 'Target Valuation', value: '₹12 Cr – ₹25 Cr Cap' },
       { label: 'Typical Runway', value: '12 – 18 Months' },
-      { label: 'Star Capability Grant', value: 'StarTech Stack + Cloud Infrastructure' },
+      { label: 'Star Capability Grant', value: 'StarTech Stack + Cloud Credits' },
       { label: 'Governance', value: 'Advisor Seat / Zero Board Overhead' },
     ],
     vectors: [
@@ -163,7 +163,7 @@ export const CAPITAL_DATA = {
 };
 
 // ============================================================================
-// 2. MAIN VENTURE CAPITAL APPLICATION COMPONENT (RED & WHITE THEME)
+// 2. MAIN VENTURE CAPITAL APPLICATION COMPONENT (RESPONSIVE RED & WHITE)
 // ============================================================================
 
 export default function VentureCapitalApp() {
@@ -171,16 +171,16 @@ export default function VentureCapitalApp() {
   const [selectedStageIndex, setSelectedStageIndex] = useState(0);
   const [selectedTicketIndex, setSelectedTicketIndex] = useState(1);
 
-  // Clean Tab definitions without extra live tags
+  // Responsive Tab definitions with desktop + mobile short labels
   const tabs = [
-    { id: 'status', label: 'OPERATING TELEMETRY', icon: Activity },
-    { id: 'stage', label: 'INVESTMENT STAGES', icon: Layers },
-    { id: 'capital', label: 'CAPITAL ALLOCATION', icon: TrendingUp },
+    { id: 'status', label: 'OPERATING TELEMETRY', shortLabel: 'TELEMETRY', icon: Activity },
+    { id: 'stage', label: 'INVESTMENT STAGES', shortLabel: 'STAGES', icon: Layers },
+    { id: 'capital', label: 'CAPITAL ALLOCATION', shortLabel: 'CAPITAL', icon: TrendingUp },
   ];
 
   return (
     <section 
-      className="relative w-full bg-white text-slate-900 border-y border-slate-200 overflow-hidden font-sans select-none"
+      className="relative w-full max-w-full bg-white text-slate-900 border-y border-slate-200 overflow-hidden font-sans select-none"
       id="venture-capital-matrix"
     >
       {/* Structural matrix pattern grid overlay in Red & White */}
@@ -208,42 +208,42 @@ export default function VentureCapitalApp() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
         
-        {/* Header Section without mock eyebrows */}
+        {/* Header Section: Fluid Responsive */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 pb-6 sm:pb-8 border-b border-slate-200"
         >
-          <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-none">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight sm:leading-none">
               Venture Capital <span className="text-[#DC2626]">Operating Matrix</span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-slate-600 font-normal leading-relaxed">
               Institutional deployment metrics, multi-stage founder qualification criteria, and transparent capital distribution rails backed by the Star Groups ecosystem.
             </p>
           </div>
 
-          {/* Quick Metrics Capsule in Red & White */}
-          <div className="flex items-center gap-3 bg-white border border-red-100 rounded-xl p-3 px-4 shadow-sm self-start md:self-auto">
-            <Cpu className="w-5 h-5 text-[#DC2626]" />
+          {/* Quick Metrics Capsule: Full width on mobile, compact on desktop */}
+          <div className="flex items-center justify-between sm:justify-start gap-2.5 sm:gap-3 bg-white border border-red-100 rounded-xl p-2.5 sm:p-3 px-3.5 sm:px-4 shadow-sm w-full md:w-auto">
+            <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-[#DC2626] shrink-0" />
             <div className="text-left">
-              <div className="text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold">Consensus Quorum</div>
-              <div className="text-sm font-black text-[#DC2626] font-mono">98.4% NOMINAL</div>
+              <div className="text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-slate-500 font-semibold">Consensus Quorum</div>
+              <div className="text-xs sm:text-sm font-black text-[#DC2626] font-mono">98.4% NOMINAL</div>
             </div>
-            <div className="h-6 w-[1px] bg-slate-200 mx-1"></div>
+            <div className="h-5 sm:h-6 w-[1px] bg-slate-200 mx-1"></div>
             <div className="text-left">
-              <div className="text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold">Fund Tranche</div>
-              <div className="text-sm font-black text-slate-900 font-mono">₹400 Cr POOL</div>
+              <div className="text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-slate-500 font-semibold">Fund Tranche</div>
+              <div className="text-xs sm:text-sm font-black text-slate-900 font-mono">₹400 Cr POOL</div>
             </div>
           </div>
         </motion.div>
 
-        {/* Clean Tab Navigation without mock tags */}
-        <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
-          <div className="inline-flex p-1 bg-slate-100/80 border border-slate-200 rounded-xl relative">
+        {/* Responsive Tab Bar: Full width grid on mobile, inline on desktop */}
+        <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex w-full sm:w-auto p-1 bg-slate-100/90 border border-slate-200 rounded-xl relative">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -252,13 +252,14 @@ export default function VentureCapitalApp() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-colors duration-200 z-10 ${
+                  className={`relative flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-colors duration-200 z-10 flex-1 sm:flex-none text-center ${
                     isActive ? 'text-[#DC2626]' : 'text-slate-600 hover:text-slate-900'
                   }`}
                   style={{ outline: 'none' }}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#DC2626]' : 'text-slate-400'}`} />
-                  <span>{tab.label}</span>
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isActive ? 'text-[#DC2626]' : 'text-slate-400'}`} />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="inline sm:hidden">{tab.shortLabel}</span>
 
                   {/* Red & White active tab backing with layoutId="activeGlow" */}
                   {isActive && (
@@ -271,7 +272,7 @@ export default function VentureCapitalApp() {
                         damping: 30,
                       }}
                     >
-                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#DC2626] rounded-full" />
+                      <span className="absolute bottom-0 left-2.5 right-2.5 sm:left-3 sm:right-3 h-[2px] bg-[#DC2626] rounded-full" />
                     </motion.div>
                   )}
                 </button>
@@ -281,7 +282,7 @@ export default function VentureCapitalApp() {
         </div>
 
         {/* Tab Transitions */}
-        <div className="mt-8">
+        <div className="mt-6 sm:mt-8">
           <AnimatePresence mode="wait">
             
             {/* --------------------------------------------------------------
@@ -294,25 +295,25 @@ export default function VentureCapitalApp() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
                 {/* 4 Macro Telemetry Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {STATUS_DATA.telemetry.map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-white border border-slate-200/90 rounded-xl p-5 hover:border-red-300 transition-all duration-200 shadow-sm"
+                      className="bg-white border border-slate-200/90 rounded-xl p-4 sm:p-5 hover:border-red-300 transition-all duration-200 shadow-sm"
                     >
-                      <div className="flex items-center justify-between text-slate-500 mb-2">
-                        <span className="text-[11px] font-mono font-bold tracking-wider uppercase">
+                      <div className="flex items-center justify-between text-slate-500 mb-1.5 sm:mb-2">
+                        <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase">
                           {item.label}
                         </span>
-                        <TrendingUp className="w-4 h-4 text-[#DC2626]" />
+                        <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DC2626]" />
                       </div>
-                      <div className="text-3xl font-black text-slate-900 font-mono tracking-tight">
+                      <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono tracking-tight">
                         {item.value}
                       </div>
-                      <div className="mt-2 text-[11px] font-mono text-[#DC2626] font-semibold flex items-center gap-1.5">
+                      <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] font-mono text-[#DC2626] font-semibold flex items-center gap-1.5">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#DC2626]"></span>
                         {item.delta}
                       </div>
@@ -321,36 +322,36 @@ export default function VentureCapitalApp() {
                 </div>
 
                 {/* Main Telemetry Canvas: Nodes & Event Ledger */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
                   
-                  {/* Left 8 Cols: Operational Nodes (clean without mock badges) */}
-                  <div className="lg:col-span-8 bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-sm">
-                    <div className="pb-4 border-b border-slate-100">
-                      <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                  {/* Left 8 Cols: Operational Nodes */}
+                  <div className="lg:col-span-8 bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-sm">
+                    <div className="pb-3.5 sm:pb-4 border-b border-slate-100">
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
                         Operational Node Deployment
                       </h3>
-                      <p className="text-xs text-slate-500 mt-1 font-normal">
+                      <p className="text-xs text-slate-500 mt-0.5 sm:mt-1 font-normal">
                         Core operational tracks facilitating founder diligence, investment governance, and corporate introductions.
                       </p>
                     </div>
 
-                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                       {STATUS_DATA.nodes.map((node) => (
                         <div
                           key={node.id}
-                          className="bg-slate-50/70 border border-slate-200/80 rounded-xl p-4 hover:border-red-300 hover:bg-white transition-all group"
+                          className="bg-slate-50/70 border border-slate-200/80 rounded-xl p-3.5 sm:p-4 hover:border-red-300 hover:bg-white transition-all group"
                         >
-                          <div className="mb-1.5">
-                            <span className="text-sm font-bold text-slate-900 group-hover:text-[#DC2626] transition-colors">
+                          <div className="mb-1">
+                            <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#DC2626] transition-colors">
                               {node.name}
                             </span>
                           </div>
 
-                          <p className="text-xs text-slate-600 leading-relaxed min-h-[38px]">
+                          <p className="text-xs text-slate-600 leading-relaxed min-h-[32px] sm:min-h-[38px]">
                             {node.detail}
                           </p>
 
-                          <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
+                          <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-slate-200/60 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-500">
                             <span className="text-slate-900 font-bold">{node.metric}</span>
                             <span className="text-[#DC2626] font-semibold">{node.ping}</span>
                           </div>
@@ -359,8 +360,8 @@ export default function VentureCapitalApp() {
                     </div>
 
                     {/* Bandwidth Progress Meter */}
-                    <div className="mt-6 p-4 rounded-xl bg-slate-50/80 border border-slate-200/80">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-600 mb-2">
+                    <div className="mt-5 sm:mt-6 p-3.5 sm:p-4 rounded-xl bg-slate-50/80 border border-slate-200/80">
+                      <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono text-slate-600 mb-1.5 sm:mb-2">
                         <span className="font-semibold">CAPITAL ALLOCATION BANDWIDTH</span>
                         <span className="text-[#DC2626] font-bold">88.6% CAPACITY</span>
                       </div>
@@ -374,7 +375,7 @@ export default function VentureCapitalApp() {
                   </div>
 
                   {/* Right 4 Cols: Event Stream */}
-                  <div className="lg:col-span-4 bg-white border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+                  <div className="lg:col-span-4 bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-sm">
                     <div>
                       <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                         <span className="text-[11px] font-mono tracking-wider uppercase text-slate-900 font-bold">
@@ -383,7 +384,7 @@ export default function VentureCapitalApp() {
                         <Clock className="w-4 h-4 text-[#DC2626]" />
                       </div>
 
-                      <div className="mt-4 space-y-3 font-mono">
+                      <div className="mt-3.5 sm:mt-4 space-y-2.5 sm:space-y-3 font-mono">
                         {STATUS_DATA.liveLogs.map((log, i) => (
                           <div key={i} className="p-3 bg-slate-50/70 border border-slate-200/80 rounded-lg text-xs">
                             <div className="flex items-center justify-between text-[10px] text-slate-500 mb-1">
@@ -397,7 +398,7 @@ export default function VentureCapitalApp() {
                       </div>
                     </div>
 
-                    <div className="mt-5 p-4 rounded-xl bg-red-50/60 border border-red-100">
+                    <div className="mt-4 sm:mt-5 p-3.5 sm:p-4 rounded-xl bg-red-50/60 border border-red-100">
                       <div className="text-xs font-bold text-[#DC2626] mb-1">
                         Institutional Governance
                       </div>
@@ -421,17 +422,17 @@ export default function VentureCapitalApp() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
                 {/* 4 Interactive Stage Horizontal Gate Bars */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
                   {STAGE_DATA.map((stage, idx) => {
                     const isSelected = selectedStageIndex === idx;
                     return (
                       <button
                         key={stage.id}
                         onClick={() => setSelectedStageIndex(idx)}
-                        className={`text-left p-4 rounded-xl border transition-all duration-200 relative ${
+                        className={`text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 relative ${
                           isSelected
                             ? 'bg-white border-[#DC2626] shadow-md ring-1 ring-red-200'
                             : 'bg-white border-slate-200 hover:border-slate-300'
@@ -441,8 +442,8 @@ export default function VentureCapitalApp() {
                           <span className="font-bold text-slate-700">{stage.badge}</span>
                           <span className="font-bold text-[#DC2626]">{stage.turnaround}</span>
                         </div>
-                        <h4 className="text-sm font-black text-slate-900 tracking-tight">{stage.name}</h4>
-                        <div className="mt-2 text-xs font-mono font-bold text-[#DC2626]">
+                        <h4 className="text-xs sm:text-sm font-black text-slate-900 tracking-tight">{stage.name}</h4>
+                        <div className="mt-1.5 sm:mt-2 text-xs font-mono font-bold text-[#DC2626]">
                           {stage.cheque}
                         </div>
 
@@ -458,38 +459,38 @@ export default function VentureCapitalApp() {
                 {(() => {
                   const currentStage = STAGE_DATA[selectedStageIndex];
                   return (
-                    <div className="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-sm">
-                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                    <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-8 shadow-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 pb-5 sm:pb-6 border-b border-slate-100">
                         <div>
-                          <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#DC2626] uppercase tracking-wider mb-1">
+                          <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono font-bold text-[#DC2626] uppercase tracking-wider mb-1">
                             <span>{currentStage.badge} CRITERIA</span>
                             <span>·</span>
                             <span>{currentStage.turnaround} REVIEW</span>
                           </div>
-                          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                          <h3 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
                             {currentStage.name}
                           </h3>
-                          <p className="text-sm text-slate-600 mt-2 max-w-2xl font-normal leading-relaxed">
+                          <p className="text-xs sm:text-sm text-slate-600 mt-1.5 sm:mt-2 max-w-2xl font-normal leading-relaxed">
                             {currentStage.focus}
                           </p>
                         </div>
 
-                        <div className="bg-red-50/70 border border-red-100 rounded-xl p-4 text-right self-start lg:self-auto">
-                          <div className="text-[10px] font-mono tracking-widest uppercase text-slate-500">Typical Cheque Size</div>
-                          <div className="text-2xl font-black text-[#DC2626] font-mono mt-0.5">
+                        <div className="bg-red-50/70 border border-red-100 rounded-xl p-3 sm:p-4 text-left sm:text-right w-full sm:w-auto self-start sm:self-auto">
+                          <div className="text-[10px] font-mono tracking-wider uppercase text-slate-500">Typical Cheque Size</div>
+                          <div className="text-xl sm:text-2xl font-black text-[#DC2626] font-mono mt-0.5">
                             {currentStage.cheque}
                           </div>
                         </div>
                       </div>
 
-                      {/* Metrics 4-Box Grid */}
-                      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {/* Metrics 4-Box Grid: 2 cols on mobile, 4 on desktop */}
+                      <div className="mt-5 sm:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
                         {currentStage.metrics.map((metric, i) => (
-                          <div key={i} className="p-4 bg-slate-50/70 border border-slate-200/70 rounded-xl">
-                            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">
+                          <div key={i} className="p-3 sm:p-4 bg-slate-50/70 border border-slate-200/70 rounded-xl">
+                            <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-0.5 sm:mb-1">
                               {metric.label}
                             </div>
-                            <div className="text-sm font-bold text-slate-900 font-mono">
+                            <div className="text-xs sm:text-sm font-bold text-slate-900 font-mono break-words">
                               {metric.value}
                             </div>
                           </div>
@@ -497,14 +498,14 @@ export default function VentureCapitalApp() {
                       </div>
 
                       {/* Qualification Vectors Checklist */}
-                      <div className="mt-6 pt-5 border-t border-slate-100">
-                        <div className="text-xs font-mono uppercase tracking-wider font-bold text-slate-900 mb-3">
+                      <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-slate-100">
+                        <div className="text-[11px] sm:text-xs font-mono uppercase tracking-wider font-bold text-slate-900 mb-2.5 sm:mb-3">
                           CORE QUALIFICATION CRITERIA
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-4">
                           {currentStage.vectors.map((vec, i) => (
-                            <div key={i} className="flex items-start gap-3 p-4 bg-slate-50/60 border border-slate-200/60 rounded-xl">
-                              <CheckCircle2 className="w-5 h-5 text-[#DC2626] shrink-0 mt-0.5" />
+                            <div key={i} className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 bg-slate-50/60 border border-slate-200/60 rounded-xl">
+                              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#DC2626] shrink-0 mt-0.5" />
                               <span className="text-xs text-slate-700 leading-relaxed font-normal">
                                 {vec}
                               </span>
@@ -528,27 +529,27 @@ export default function VentureCapitalApp() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
                 {/* Allocation Matrix & Sector Quotas */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
                   
                   {/* Left 6 Cols: Fund Allocation Structure */}
-                  <div className="lg:col-span-6 bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-sm">
-                    <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                  <div className="lg:col-span-6 bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-sm">
+                    <div className="flex items-center justify-between pb-3.5 sm:pb-4 border-b border-slate-100">
                       <div>
-                        <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                        <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
                           Tranche Distribution (₹400 Cr Pool)
                         </h3>
-                        <p className="text-xs text-slate-500 mt-1">Multi-stage capital reserve architecture.</p>
+                        <p className="text-xs text-slate-500 mt-0.5 sm:mt-1">Multi-stage capital reserve architecture.</p>
                       </div>
                       <span className="text-xs font-mono text-[#DC2626] font-bold">100% COMMITTED</span>
                     </div>
 
-                    <div className="mt-5 space-y-4">
+                    <div className="mt-4 sm:mt-5 space-y-3.5 sm:space-y-4">
                       {CAPITAL_DATA.allocation.map((item, i) => (
-                        <div key={i} className="p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-2">
+                        <div key={i} className="p-3.5 sm:p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5 sm:mb-2">
                             <span>{item.sector}</span>
                             <span className="font-mono text-[#DC2626]">{item.capital} ({item.percent}%)</span>
                           </div>
@@ -566,32 +567,32 @@ export default function VentureCapitalApp() {
                       ))}
                     </div>
 
-                    <div className="mt-5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 flex items-center justify-between font-sans">
+                    <div className="mt-4 sm:mt-5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 flex items-center justify-between font-sans">
                       <span>Syndicate Co-investment Multiplier</span>
                       <span className="font-mono font-bold text-[#DC2626]">3.5x Ratio</span>
                     </div>
                   </div>
 
                   {/* Right 6 Cols: Sector Quotas */}
-                  <div className="lg:col-span-6 bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-sm">
-                    <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                  <div className="lg:col-span-6 bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-sm">
+                    <div className="flex items-center justify-between pb-3.5 sm:pb-4 border-b border-slate-100">
                       <div>
-                        <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                        <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
                           Sector Deployment Mandate
                         </h3>
-                        <p className="text-xs text-slate-500 mt-1">Strategic domain allocation targets.</p>
+                        <p className="text-xs text-slate-500 mt-0.5 sm:mt-1">Strategic domain allocation targets.</p>
                       </div>
                       <span className="text-xs font-mono text-slate-500">ACTIVE MANDATE</span>
                     </div>
 
-                    <div className="mt-5 space-y-3.5">
+                    <div className="mt-4 sm:mt-5 space-y-3 sm:space-y-3.5">
                       {CAPITAL_DATA.verticals.map((vert, i) => (
-                        <div key={i} className="p-3.5 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                        <div key={i} className="p-3 sm:p-3.5 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="flex items-center justify-between text-xs font-mono mb-1 sm:mb-1.5">
                             <span className="text-slate-900 font-sans font-bold">{vert.name}</span>
                             <span className="text-[#DC2626] font-bold">{vert.share}</span>
                           </div>
-                          <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-2">
+                          <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-1.5 sm:mb-2">
                             <div 
                               className="h-full bg-[#DC2626] rounded-full"
                               style={{ width: vert.barWidth, transform: 'translateZ(0)' }}
@@ -609,24 +610,24 @@ export default function VentureCapitalApp() {
                 </div>
 
                 {/* Interactive Cheque Sizing Matrix in Rupees */}
-                <div className="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-sm">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-8 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 pb-4 sm:pb-5 border-b border-slate-100">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                      <h3 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
                         Interactive Ticket Sizing Matrix
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal">
+                      <p className="text-xs sm:text-sm text-slate-600 mt-0.5 sm:mt-1 font-normal">
                         Select an institutional cheque size to inspect milestone disbursements and group capability credits.
                       </p>
                     </div>
 
-                    {/* Sizing Pills in Rupees */}
-                    <div className="inline-flex p-1 bg-slate-100 border border-slate-200 rounded-xl self-start sm:self-auto">
+                    {/* Sizing Pills in Rupees: Fluid flex on mobile */}
+                    <div className="flex flex-wrap sm:inline-flex w-full sm:w-auto gap-1 p-1 bg-slate-100 border border-slate-200 rounded-xl">
                       {CAPITAL_DATA.ticketSizes.map((ticket, i) => (
                         <button
                           key={i}
                           onClick={() => setSelectedTicketIndex(i)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                          className={`flex-1 sm:flex-none px-2 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all text-center ${
                             selectedTicketIndex === i
                               ? 'bg-[#DC2626] text-white shadow-sm'
                               : 'text-slate-600 hover:text-slate-900'
@@ -638,39 +639,39 @@ export default function VentureCapitalApp() {
                     </div>
                   </div>
 
-                  {/* Calculated Sizing Outputs */}
+                  {/* Calculated Sizing Outputs: 2 cols on mobile, 5 on desktop */}
                   {(() => {
                     const ticket = CAPITAL_DATA.ticketSizes[selectedTicketIndex];
                     return (
-                      <div className="mt-6 grid grid-cols-2 lg:grid-cols-5 gap-4">
-                        <div className="p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Cheque Level</div>
-                          <div className="text-lg font-black text-slate-900 font-mono">{ticket.amount}</div>
-                          <div className="text-[10px] font-mono text-[#DC2626] font-semibold mt-1">{ticket.stage}</div>
+                      <div className="mt-5 sm:mt-6 grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-4">
+                        <div className="p-3 sm:p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-0.5 sm:mb-1">Cheque Level</div>
+                          <div className="text-base sm:text-lg font-black text-slate-900 font-mono">{ticket.amount}</div>
+                          <div className="text-[10px] font-mono text-[#DC2626] font-semibold mt-0.5 sm:mt-1">{ticket.stage}</div>
                         </div>
 
-                        <div className="p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Target Equity Range</div>
-                          <div className="text-lg font-black text-[#DC2626] font-mono">{ticket.equity}</div>
-                          <div className="text-[10px] font-mono text-slate-500 mt-1">Founder-friendly</div>
+                        <div className="p-3 sm:p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-0.5 sm:mb-1">Target Equity Range</div>
+                          <div className="text-base sm:text-lg font-black text-[#DC2626] font-mono">{ticket.equity}</div>
+                          <div className="text-[10px] font-mono text-slate-500 mt-0.5 sm:mt-1">Founder-friendly</div>
                         </div>
 
-                        <div className="p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Initial Disbursal</div>
-                          <div className="text-lg font-black text-slate-900 font-mono">{ticket.upfront}</div>
-                          <div className="text-[10px] font-mono text-slate-500 mt-1">At Agreement Signing</div>
+                        <div className="p-3 sm:p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-0.5 sm:mb-1">Initial Disbursal</div>
+                          <div className="text-base sm:text-lg font-black text-slate-900 font-mono">{ticket.upfront}</div>
+                          <div className="text-[10px] font-mono text-slate-500 mt-0.5 sm:mt-1">At Signing</div>
                         </div>
 
-                        <div className="p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Milestone Tranches</div>
-                          <div className="text-lg font-black text-slate-900 font-mono">{ticket.tranches}</div>
-                          <div className="text-[10px] font-mono text-slate-500 mt-1">KPI Verified</div>
+                        <div className="p-3 sm:p-4 bg-slate-50/70 border border-slate-200/80 rounded-xl">
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-0.5 sm:mb-1">Milestones</div>
+                          <div className="text-base sm:text-lg font-black text-slate-900 font-mono">{ticket.tranches}</div>
+                          <div className="text-[10px] font-mono text-slate-500 mt-0.5 sm:mt-1">KPI Verified</div>
                         </div>
 
-                        <div className="col-span-2 lg:col-span-1 p-4 bg-red-50/60 border border-red-200 rounded-xl">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-[#DC2626] font-bold mb-1">Star Capability Grant</div>
-                          <div className="text-lg font-black text-[#DC2626] font-mono">{ticket.credit}</div>
-                          <div className="text-[10px] font-mono text-slate-600 mt-1">Non-dilutive Services</div>
+                        <div className="col-span-2 lg:col-span-1 p-3.5 sm:p-4 bg-red-50/60 border border-red-200 rounded-xl">
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-[#DC2626] font-bold mb-0.5 sm:mb-1">Star Capability Grant</div>
+                          <div className="text-base sm:text-lg font-black text-[#DC2626] font-mono">{ticket.credit}</div>
+                          <div className="text-[10px] font-mono text-slate-600 mt-0.5 sm:mt-1">Non-dilutive Services</div>
                         </div>
                       </div>
                     );
@@ -682,17 +683,17 @@ export default function VentureCapitalApp() {
           </AnimatePresence>
         </div>
 
-        {/* Core CTA in Red & White with Star Red Glow */}
-        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
+        {/* Core CTA: Full width on mobile, inline on desktop */}
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-[#DC2626] shrink-0">
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+              <h4 className="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wider">
                 Ready for Institutional Review?
               </h4>
-              <p className="text-xs text-slate-600 mt-0.5">
+              <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
                 We review submissions within 5 business days under strict institutional confidentiality.
               </p>
             </div>
@@ -706,7 +707,7 @@ export default function VentureCapitalApp() {
                 boxShadow: '0 0 30px rgba(220, 38, 38, 0.28)',
               }}
               whileTap={{ scale: 0.98 }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#DC2626] text-white font-bold text-xs tracking-wider uppercase border border-[#DC2626] transition-colors duration-200 cursor-pointer shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#DC2626] text-white font-bold text-xs tracking-wider uppercase border border-[#DC2626] transition-colors duration-200 cursor-pointer shadow-md text-center"
               style={{
                 boxShadow: '0 4px 18px rgba(220, 38, 38, 0.2)',
               }}

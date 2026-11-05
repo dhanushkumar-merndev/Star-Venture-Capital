@@ -10,6 +10,21 @@ export const VENTURE_PHRASES = [
   "University to Company"
 ];
 
+// Calculate responsive mobile font size based on phrase length to guarantee fit on any screen
+const getMobileFontSize = (phrase = '') => {
+  const len = phrase.length;
+  if (len > 20) {
+    // Longest phrases: "Pre-Graduation Capital" (22), "University to Company" (21)
+    return "clamp(1.15rem, 5.1vw, 1.85rem)";
+  } else if (len > 14) {
+    // Medium phrases: "Build What’s Next" (17), "Student Founders" (16)
+    return "clamp(1.35rem, 6.2vw, 2.25rem)";
+  } else {
+    // Short phrases: "First Check" (11)
+    return "clamp(1.6rem, 7.5vw, 2.65rem)";
+  }
+};
+
 const DepthTextController = forwardRef(({
   phrases = VENTURE_PHRASES,
   initialText,
@@ -26,6 +41,60 @@ const DepthTextController = forwardRef(({
   const [config, setConfig] = useState(restProps);
   const [animStage, setAnimStage] = useState('visible'); // 'visible' | 'glow-out' | 'glow-in'
   const isAutoRef = useRef(autoCycle);
+
+  // Responsive mobile state (breakpoint 768px)
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
+
+  const wrapperRef = useRef(null);
+  const scalerRef = useRef(null);
+  const [autoScale, setAutoScale] = useState(1);
+
+  // Track window resize for seamless mobile/desktop transitions
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Mobile container fit check: automatically scales down if any phrase ever exceeds width
+  useEffect(() => {
+    if (!isMobile) {
+      setAutoScale(1);
+      return;
+    }
+
+    const checkFit = () => {
+      if (!wrapperRef.current || !scalerRef.current) return;
+      const containerWidth = wrapperRef.current.clientWidth;
+      const textWidth = scalerRef.current.scrollWidth;
+      if (containerWidth > 0 && textWidth > 0) {
+        // Safe margin for 3D extrusion and perspective tilt
+        const safeAllowedWidth = containerWidth - 16;
+        if (textWidth > safeAllowedWidth) {
+          const ratio = safeAllowedWidth / textWidth;
+          setAutoScale(Math.min(1, Math.max(0.65, ratio)));
+        } else {
+          setAutoScale(1);
+        }
+      }
+    };
+
+    checkFit();
+    const frameId = requestAnimationFrame(checkFit);
+    const timeoutId = setTimeout(checkFit, 200);
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timeoutId);
+    };
+  }, [text, isMobile]);
 
   // Smooth Glow Transition Function
   const transitionToPhrase = (newText, newDepthColor) => {
@@ -92,30 +161,53 @@ const DepthTextController = forwardRef(({
         : `drop-shadow(0 0 20px rgba(220, 38, 38, 0.6)) drop-shadow(0 6px 24px rgba(0, 0, 0, 0.95))`
   };
 
+  // Keep desktop 100% unchanged; adapt cleanly for mobile viewports
+  const responsiveLayers = isMobile ? 20 : 36;
+  const responsiveDepth = isMobile ? 1.5 : 2.6;
+  const responsiveTilt = isMobile ? 3.8 : 6.5;
+  const responsivePerspective = isMobile ? 800 : 900;
+  const responsiveFontSize = isMobile
+    ? getMobileFontSize(text)
+    : "clamp(2.75rem, 6.8vw, 5.25rem)";
+
   return (
-    <div className="depth-text-cycler-wrapper" style={transitionStyle}>
-      <DepthText
-        text={text}
-        layers={36}
-        depth={2.6}
-        depthColor={depthColor}
-        faceColor="#ffffff"
-        gradientDepth={false}
-        hoverPush={0.5}
-        float={true}
-        tilt={6.5}
-        pointerTracking={true}
-        smoothing={0.14}
-        perspective={900}
-        autoOrbit={true}
-        orbitSpeed={0.3}
-        fontSize="clamp(2.75rem, 6.8vw, 5.25rem)"
-        fontWeight={900}
-        shadow={true}
-        outline={false}
-        intro={false}
-        {...config}
-      />
+    <div ref={wrapperRef} className="depth-text-cycler-wrapper" style={transitionStyle}>
+      <div
+        ref={scalerRef}
+        className="depth-text-scaler"
+        style={{
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxWidth: '100%',
+          transform: autoScale < 1 ? `scale(${autoScale.toFixed(3)})` : undefined,
+          transformOrigin: 'center center',
+          transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+        }}
+      >
+        <DepthText
+          text={text}
+          layers={responsiveLayers}
+          depth={responsiveDepth}
+          depthColor={depthColor}
+          faceColor="#ffffff"
+          gradientDepth={false}
+          hoverPush={0.5}
+          float={true}
+          tilt={responsiveTilt}
+          pointerTracking={true}
+          smoothing={0.14}
+          perspective={responsivePerspective}
+          autoOrbit={true}
+          orbitSpeed={0.3}
+          fontSize={responsiveFontSize}
+          fontWeight={900}
+          shadow={true}
+          outline={false}
+          intro={false}
+          {...config}
+        />
+      </div>
     </div>
   );
 });

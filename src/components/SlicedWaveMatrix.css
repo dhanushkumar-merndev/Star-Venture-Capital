@@ -14,12 +14,8 @@
 
 .wave-matrix-mount-fullbleed {
   width: 100%;
-  width: 100vw;
+  max-width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   overflow: hidden;
   background: #ffffff;
   padding: 0;
@@ -420,12 +416,15 @@
   }
 
   .wave-matrix-mount-fullbleed {
-    margin-top: 1rem;
-    width: 100vw;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    left: 50%;
-    right: 50%;
+    margin-top: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    left: auto;
+    right: auto;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
   }
 
   .wave-matrix-wrapper {
