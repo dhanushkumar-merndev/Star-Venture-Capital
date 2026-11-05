@@ -9,7 +9,9 @@ import { mountDepthText, VENTURE_PHRASES } from "../components/mountDepthText.js
 import { initCardSwap } from "./cardSwap.js";
 import { initEnquiryForm } from "./enquiryForm.js";
 import { mountWaveMatrix } from "../components/mountWaveMatrix.jsx";
+import { mountVentureApp } from "../components/mountVentureApp.jsx";
 import { initSmoothScroll } from "./smoothScroll.js";
+import "../styles/ventureApp.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   // 0. Initialize Lenis Smooth Scroll
@@ -49,6 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
       cycleInterval: 4200,
       autoCycle: true
     });
+  }
+
+  // 2b. Initialize Venture Capital Dark Canvas Operating Matrix (After Hero)
+  const vcMount = document.getElementById("vcAppMount");
+  let vcController = null;
+  if (vcMount) {
+    vcController = mountVentureApp(vcMount);
   }
 
   // 3. Initialize Interactive Sliced Waves Institutional Overview Matrix

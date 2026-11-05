@@ -2036,6 +2036,134 @@ body::before {
   }
 }
 
+/* ==========================================================================
+   Esteemed Clients & Enterprise Ecosystem Showcase
+   ========================================================================== */
+.section-clients {
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  background: #FFFFFF;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.clients-header-stack {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+}
+
+.clients-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.95rem;
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--star-red, #DC2626);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.clients-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--star-red, #DC2626);
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+}
+
+.clients-showcase-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clients-showcase-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 50px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(220, 38, 38, 0.15);
+}
+
+.clients-image-container {
+  width: 100%;
+  background: #FFFFFF;
+  padding: clamp(0.75rem, 2.5vw, 2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.clients-grid-image {
+  width: 100%;
+  max-width: 1120px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.clients-stats-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: #F8FAFC;
+  gap: 1.5rem;
+}
+
+.client-stat-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.client-stat-num {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
+
+.client-stat-desc {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.client-stat-sep {
+  width: 1px;
+  height: 38px;
+  background: rgba(226, 232, 240, 0.9);
+}
+
+@media (max-width: 640px) {
+  .clients-stats-bar {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+  }
+  .client-stat-sep {
+    display: none;
+  }
+}
+
 /* Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

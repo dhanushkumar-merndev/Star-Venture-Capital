@@ -4,10 +4,10 @@ import DepthText from './DepthText';
 
 export const VENTURE_PHRASES = [
   "Build What’s Next",
-  "Patient Capital",
-  "Transformative Ideas",
-  "Enduring Ventures",
-  "The Star Syndicate"
+  "Student Founders",
+  "Pre-Graduation Capital",
+  "First Check",
+  "University to Company"
 ];
 
 const DepthTextController = forwardRef(({

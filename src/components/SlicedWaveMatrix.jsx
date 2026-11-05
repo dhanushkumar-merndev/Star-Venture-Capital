@@ -8,11 +8,12 @@ export const MATRIX_ITEMS = [
     index: "01",
     tag: "01 · PHILOSOPHY",
     title: "Investment Approach",
+    shortTitle: "Approach",
     desc: "Discover our 4 core pillars: High conviction, operational synergy, patient capital, and founder stewardship with an interactive 3D card deck.",
     href: "/approach.html",
     cta: "Read Investment Thesis",
     edge: "top",
-    xRatio: 0.18,
+    xRatio: 0.16,
     themeColor: "#ef4444"
   },
   {
@@ -20,11 +21,12 @@ export const MATRIX_ITEMS = [
     index: "02",
     tag: "02 · SECTORS",
     title: "Investment Focus",
+    shortTitle: "Focus",
     desc: "Explore our 5 strategic domains: Enterprise Software, Brand Tech, Media Production Tech, Built Spaces, and Eco Infrastructure.",
     href: "/focus.html",
     cta: "View Focus Sectors",
     edge: "bottom",
-    xRatio: 0.31,
+    xRatio: 0.30,
     themeColor: "#b91c1c"
   },
   {
@@ -32,11 +34,12 @@ export const MATRIX_ITEMS = [
     index: "03",
     tag: "03 · ECOSYSTEM",
     title: "Star Groups Capabilities",
+    shortTitle: "Capabilities",
     desc: "Understand our parent group lineage across StarTech, Growth Hub, Production, Garden, and Space Interiors, with our governance framework.",
     href: "/capabilities.html",
     cta: "Inspect Capability Map",
     edge: "top",
-    xRatio: 0.45,
+    xRatio: 0.44,
     themeColor: "#831843"
   },
   {
@@ -44,11 +47,12 @@ export const MATRIX_ITEMS = [
     index: "04",
     tag: "04 · DEPLOYMENTS",
     title: "Portfolio & Syndicate",
+    shortTitle: "Portfolio",
     desc: "View active co-investments, stealth deployment tracks, and ecosystem syndicate benchmarks with interactive filtering.",
     href: "/portfolio.html",
     cta: "Browse Portfolio Tracks",
     edge: "bottom",
-    xRatio: 0.59,
+    xRatio: 0.58,
     themeColor: "#991b1b"
   },
   {
@@ -56,6 +60,7 @@ export const MATRIX_ITEMS = [
     index: "05",
     tag: "05 · TIMELINE",
     title: "Investment Process",
+    shortTitle: "Process",
     desc: "Review our transparent 4-stage evaluation workflow from initial 5-day review to diligence, term sheets, and close.",
     href: "/process.html",
     cta: "Check Founder Timeline",
@@ -68,11 +73,12 @@ export const MATRIX_ITEMS = [
     index: "06",
     tag: "06 · OVERSIGHT",
     title: "Governance & Oversight",
+    shortTitle: "Governance",
     desc: "Learn about our investment committee governance, fiduciary integrity standards, and direct partner access protocols.",
     href: "/governance.html",
     cta: "Review Governance",
     edge: "bottom",
-    xRatio: 0.84,
+    xRatio: 0.86,
     themeColor: "#4a044e"
   }
 ];
@@ -201,30 +207,50 @@ export default function SlicedWaveMatrix({ items = MATRIX_ITEMS }) {
 
       const isExpanded = expandedIndexRef.current === idx;
 
+      // Responsive layout checks
+      const isMobile = w < 640;
+      const isTablet = w >= 640 && w < 1024;
+
       // Position card: carried smoothly with the wave
       // Add safe boundary clamping so Card 01 and Card 06 NEVER touch screen edges
-      const halfCardWidth = isExpanded ? 185 : 95;
-      const clampedX = Math.max(halfCardWidth + 36, Math.min(waveX, w - halfCardWidth - 36));
+      const halfCardWidth = isExpanded 
+        ? (isMobile ? Math.min(160, w * 0.44) : 185) 
+        : (isMobile ? 50 : 95);
+      const edgePad = isMobile ? 12 : 36;
+      const clampedX = Math.max(halfCardWidth + edgePad, Math.min(waveX, w - halfCardWidth - edgePad));
 
       let cardY;
       let cardAnchorY;
       if (isExpanded) {
-        // Detailed card: anchored comfortably inside container boundaries without clipping
-        if (isTop) {
-          cardY = Math.max(170, Math.min(edgeY - 145, 225));
-          cardAnchorY = cardY + 115;
+        if (isMobile) {
+          // On mobile, center detailed card vertically for clean inspection
+          cardY = h * 0.5;
+          cardAnchorY = isTop ? cardY - 110 : cardY + 110;
         } else {
-          cardY = Math.min(h - 170, Math.max(edgeY + 145, h - 225));
-          cardAnchorY = cardY - 115;
+          // Detailed card on desktop: anchored comfortably inside container boundaries without clipping
+          if (isTop) {
+            cardY = Math.max(170, Math.min(edgeY - 145, 225));
+            cardAnchorY = cardY + 115;
+          } else {
+            cardY = Math.min(h - 170, Math.max(edgeY + 145, h - 225));
+            cardAnchorY = cardY - 115;
+          }
         }
       } else {
-        // Compact tiny card riding the wave up and down
-        if (isTop) {
-          cardY = edgeY - 60;
-          cardAnchorY = cardY + 18;
+        if (isMobile) {
+          // Compact tiny card riding wave on mobile with clean vertical clearance
+          const vertOffset = isTop ? 44 : 44;
+          cardY = isTop ? Math.max(26, edgeY - vertOffset) : Math.min(h - 26, edgeY + vertOffset);
+          cardAnchorY = isTop ? cardY + 15 : cardY - 15;
         } else {
-          cardY = edgeY + 60;
-          cardAnchorY = cardY - 18;
+          // Compact tiny card riding the wave up and down on desktop
+          if (isTop) {
+            cardY = edgeY - 60;
+            cardAnchorY = cardY + 18;
+          } else {
+            cardY = edgeY + 60;
+            cardAnchorY = cardY - 18;
+          }
         }
       }
 
@@ -401,7 +427,8 @@ export default function SlicedWaveMatrix({ items = MATRIX_ITEMS }) {
                   aria-label={`Inspect ${item.title}`}
                 >
                   <span className="wave-node-num">{item.index}</span>
-                  <span className="wave-node-title">{item.title}</span>
+                  <span className="wave-node-title wave-node-title-desktop">{item.title}</span>
+                  <span className="wave-node-title wave-node-title-mobile">{item.shortTitle || item.title}</span>
                   <span className="wave-node-chevron">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       {item.edge === 'top' ? (
